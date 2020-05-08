@@ -15,12 +15,12 @@ var PlayerStats = {
 
 function updatePlayer(x, y){
   ctx.fillStyle = "rpg(204, 0, 0)";
-  ctx.fillRect(playerX, playerY, 50, 50);
+  ctx.fillRect(175, 175, 50, 50);
 }
 
 
 function update(){
-  updatePlayer(playerX, playerY);
+  updatePlayer(x, y);
 }
 
 setInterval(update, 15);
