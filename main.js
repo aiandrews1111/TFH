@@ -7,8 +7,13 @@ var PlayerStats = {
   Name: "NA",
 };
 
+function updatePlayer(){
+  console.log("player updated");
+}
+
+
 function update(){
-  document.write("hello");
+  updatePlayer();
 }
 
 setInterval(update, 15);
