@@ -13,14 +13,14 @@ var PlayerStats = {
   Name: "NA",
 };
 
-function updatePlayer(x, y){
+function updatePlayer(){
   ctx.fillStyle = "rpg(204, 0, 0)";
   ctx.fillRect(175, 175, 50, 50);
 }
 
 
 function update(){
-  updatePlayer(x, y);
+  updatePlayer();
 }
 
 setInterval(update, 15);
