@@ -1,3 +1,9 @@
+var canvas = document.getElementbyID("Game");
+var ctx = canvas.getContext("2d");
+var playerX = 175;
+var playerY = 175;
+
+
 var PlayerStats = {
 
   HP:100,
@@ -7,13 +13,14 @@ var PlayerStats = {
   Name: "NA",
 };
 
-function updatePlayer(){
-  console.log("player updated");
+function updatePlayer(x, y){
+  ctx.fillStyle = "rpg(204, 0, 0)";
+  ctx.fillRect(x, y, 50, 50);
 }
 
 
 function update(){
-  updatePlayer();
+  updatePlayer(playerX, playerY);
 }
 
 setInterval(update, 15);
