@@ -15,7 +15,7 @@ var PlayerStats = {
 
 function updatePlayer(x, y){
   ctx.fillStyle = "rpg(204, 0, 0)";
-  ctx.fillRect(x, y, 50, 50);
+  ctx.fillRect(playerX, playerY, 50, 50);
 }
 
 
