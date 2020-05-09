@@ -45,6 +45,7 @@ function updatePlayer(x, y){
 
 function update(){
   updatePlayer(playerX, playerY);
+  ctx.clearRect(0, 0, 400, 400);
 }
 
 setInterval(update, 15);
