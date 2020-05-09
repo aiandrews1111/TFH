@@ -22,6 +22,7 @@ function checkUser() {
   if (user != "") {
     alert("Welcome back, " + user);
   } else {
+    alert("Welcome to this game!");
     user = prompt("Please enter your name:", "");
     if (user != "" && user != null) {
       setCookie("username", user, 365);
