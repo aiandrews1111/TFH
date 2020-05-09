@@ -15,16 +15,24 @@ var PlayerStats = {
 
 document.addEventListener('keydown', event => {
   if (event.keyCode === 87 || event.keyCode === 38) {
+    if (playerY>25){
     playerY = playerY - 2;
+    }
     //W key or Up key
   } else if (event.keyCode === 65 || event.keyCode === 37) {
+    if (playerX>25){
     playerX = playerX - 2;
+    }
     //A Key or Left key
   } else if (event.keyCode === 83 || event.keyCode === 40) {
+    if (playerY<375){
     playerY = playerY + 2;
+    }
     //S Key or Down key
   } else if (event.keyCode === 68 || event.keyCode === 39) {
+    if (playerX<375){
     playerX = playerX + 2;
+    }
     //D Key or Right key
   }
 });
@@ -36,10 +44,6 @@ function updatePlayer(x, y){
 
 
 function update(){
-  if (playerX>375){playerX = 375;}
-  if (playerX<25){playerX = 25;}
-  if (playerY>375){playerY = 375;}
-  if (playerY<25){playerY = 25;}
   updatePlayer(playerX, playerY);
 }
 
