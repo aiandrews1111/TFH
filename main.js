@@ -1,4 +1,4 @@
-var canvas = document.getElementbyID("Game");
+var canvas = document.getElementbyId("Game");
 var ctx = canvas.getContext("2d");
 var playerX = 175;
 var playerY = 175;
@@ -30,7 +30,7 @@ ddocument.addEventListener('keydown', event => {
 });
                           
 function updatePlayer(x, y){
-  ctx.fillStyle = "rbg(204, 0, 0)";
+  ctx.fillStyle = "rgb(204, 0, 0)";
   ctx.fillRect(x, y, 50, 50);
 }
 
