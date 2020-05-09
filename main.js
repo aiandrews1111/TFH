@@ -1,5 +1,5 @@
-var canvas = document.getElementbyId("Game");
-var ctx = canvas.getContext("2d");
+var canvas = document.getElementbyId('Game');
+var ctx = canvas.getContext('2d');
 var playerX = 175;
 var playerY = 175;
 
