@@ -14,23 +14,44 @@ var x = 150,
 function update() {
     requestAnimationFrame(update);
     
-    if (keys[38|| keys[83]) {
+    if (keys[38]) {
         if (velY > -speed) {
             velY--;
         }
     }
     
-    if (keys[40] || keys[87]) {
+    if (keys[40]) {
         if (velY < speed) {
             velY++;
         }
     }
-    if (keys[39] || keys[68]) {
+    if (keys[39]) {
         if (velX < speed) {
             velX++;
         }
     }
-    if (keys[37] || keys[65]) {
+    if (keys[37]) {
+        if (velX > -speed) {
+            velX--;
+        }
+    }
+    if (keys[83]) {
+        if (velY > -speed) {
+            velY--;
+        }
+    }
+    
+    if (keys[87]) {
+        if (velY < speed) {
+            velY++;
+        }
+    }
+    if (keys[68]) {
+        if (velX < speed) {
+            velX++;
+        }
+    }
+    if (keys[65]) {
         if (velX > -speed) {
             velX--;
         }
