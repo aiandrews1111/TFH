@@ -20,7 +20,7 @@ function setCookie(cname, cvalue, exdays) {
 function checkUser() {
   var user = getCookie("username");
   if (user != "") {
-    alert("Hello noob, you are bcak to playing this game, I hope you rage quit again, " + user);
+    alert("Welcome back, " + user);
   } else {
     user = prompt("Please enter your name:", "");
     if (user != "" && user != null) {
