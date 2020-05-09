@@ -1,68 +1,43 @@
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
-
-canvas.width = canvas.height = 300;
-
-var x = 150,
-    y = 150,
-    velY = 0,
-    velX = 0,
-    speed = 2,
-    friction = 0.98,
-    keys = [];
-
-function update() {
-    requestAnimationFrame(update);
-    
-    if (keys[38]) {
-        if (velY > -speed) {
-            velY--;
-        }
-    }
-    
-    if (keys[40]) {
-        if (velY < speed) {
-            velY++;
-        }
-    }
-    if (keys[39]) {
-        if (velX < speed) {
-            velX++;
-        }
-    }
-    if (keys[37]) {
-        if (velX > -speed) {
-            velX--;
-        }
-    }
-
-    velY *= friction;
-    y += velY;
-    velX *= friction;
-    x += velX;
-
-    if (x >= 295) {
-        x = 295;
-    } else if (x <= 5) {
-        x = 5;
-    }
-
-    if (y > 295) {
-        y = 295;
-    } else if (y <= 5) {
-        y = 5;
-    }
+var playerX = 175;
+var playerY = 175;
 
 
-    ctx.fillStyle = "rgb(204, 0, 0)";
-    ctx.fillRect(x, y, 5, 5);
+var PlayerStats = {
+
+  HP:100,
+  Equppied:"Pistol",
+  Speed: 10,
+  Level: 1,
+  Name: "NA",
+};
+
+document.addEventListener('keydown', event => {
+  if (event.keyCode === 87 || event.keyCode === 38) {
+    playerY = playerY - 2;
+    //W key or Up key
+  } else if (event.keyCode === 65 || event.keyCode === 37) {
+    playerX = playerX - 2;
+    //A Key or Left key
+  } else if (event.keyCode === 83 || event.keyCode === 40) {
+    playerY = playerY + 2;
+    //S Key or Down key
+  } else if (event.keyCode === 68 || event.keyCode === 39) {
+    playerX = playerX + 2;
+    //D Key or Right key
+  }
+});
+                          
+function updatePlayer(x, y){
+  ctx.fillStyle = "rgb(204, 0, 0)";
+  ctx.fillRect(x, y, 50, 50);
 }
 
-update();
 
-document.body.addEventListener("keydown", function (e) {
-    keys[e.keyCode] = true;
-});
-document.body.addEventListener("keyup", function (e) {
-    keys[e.keyCode] = false;
-});
+function update(){
+  updatePlayer(playerX, playerY);
+  ctx.clearRect(0, 0, 400, 400);
+}
+
+setInterval(update, 15);
