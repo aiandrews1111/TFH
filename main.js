@@ -32,14 +32,14 @@ document.addEventListener('keydown', event => {
 function updatePlayer(x, y){
   ctx.fillStyle = "rgb(204, 0, 0)";
   ctx.fillRect(x, y, 50, 50);
-  if (x>375){x = 375;}
-  if (x<25){x = 25;}
-  if (y>375){y = 375;}
-  if (y<25){y = 25;}
 }
 
 
 function update(){
+  if (playerX>375){playerX = 375;}
+  if (playerX<25){playerX = 25;}
+  if (playerY>375){playerY = 375;}
+  if (playerY<25){playerY = 25;}
   updatePlayer(playerX, playerY);
 }
 
