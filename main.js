@@ -14,13 +14,13 @@ var x = 150,
 function update() {
     requestAnimationFrame(update);
     
-    if (keys[38] || keys[83]) {
+    if (keys[38] || keys[87]) {
         if (velY > -speed) {
             velY--;
         }
     }
     
-    if (keys[40] || keys[87]) {
+    if (keys[40] || keys[83]) {
         if (velY < speed) {
             velY++;
         }
