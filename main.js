@@ -8,7 +8,7 @@ var x = 150,
     velY = 0,
     velX = 0,
     speed = 2,
-    friction = 0.92,
+    friction = 0.77,
     keys = [];
 
 function update() {
