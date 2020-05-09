@@ -1,4 +1,4 @@
-var canvas = document.getElementbyId('Game');
+var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 var playerX = 175;
 var playerY = 175;
