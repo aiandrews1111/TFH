@@ -13,6 +13,22 @@ var PlayerStats = {
   Name: "NA",
 };
 
+document.addEventListener('keydown', event => {
+  if (event.keyCode === 87) {
+    playerY = playerY - 2;
+    //W key
+  } else if (event.keyCode === 65) {
+    playerX = playerX - 2;
+    //A Key
+  } else if (event.keyCode === 63) {
+    playerY = playerY + 2;
+    //S Key
+  } else if (event.keyCode === 68) {
+    playerX = playerX + 2;
+    //D Key
+  }
+});
+                          
 function updatePlayer(x, y){
   ctx.fillStyle = "rpg(204, 0, 0)";
   ctx.fillRect(x, y, 50, 50);
