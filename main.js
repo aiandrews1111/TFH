@@ -53,10 +53,9 @@ function update() {
         y = 5;
     }
 
-    ctx.clearRect(0, 0, 300, 300);
-    ctx.beginPath();
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-    ctx.fill();
+
+    ctx.fillStyle = "rgb(204, 0, 0)";
+    ctx.fillRect(x, y, 5, 5);
 }
 
 update();
