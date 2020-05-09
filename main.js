@@ -13,7 +13,7 @@ var PlayerStats = {
   Name: "NA",
 };
 
-ddocument.addEventListener('keydown', event => {
+document.addEventListener('keydown', event => {
   if (event.keyCode === 87 || event.keyCode === 38) {
     playerY = playerY - 2;
     //W key or Up key
