@@ -15,6 +15,8 @@ var bulletx = 0,
     bulletDirX = 0,
     bulletSpeed = 5,
     bulletDirY = 0,
+    reloadTimer = 0,
+    bulletReload = 60,
     bullets = [];
     
 
@@ -42,7 +44,10 @@ Bullet.prototype.draw = function() {
 
 
 document.addEventListener("click", function(event){
+    if (reloadTimer<0){
     bullets.push(new Bullet(x, y));
+    reloadTimer = bulletReload;
+    }
 });
 
 
@@ -97,6 +102,8 @@ function update() {
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
+    
+    reloadTimer --;
 }
 
 
