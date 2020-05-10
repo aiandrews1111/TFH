@@ -34,16 +34,14 @@ document.addEventListener("click", function(event){
 
 function update() {
     requestAnimationFrame(update);
+    ctx.clearRect(0, 0, 500, 500);
     
     if (bulletDirX != 0){
-    bulletx += (bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirX;
-    bullety += (bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirY;
+    bulletx += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirX;
+    bullety += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirY;
     ctx.beginPath();
     ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
     ctx.fill();
-        
-    console.log(mouseX);
-        //debug
     }
     //temporary location
     
@@ -86,7 +84,6 @@ function update() {
         y = 5;
     }
 
-    ctx.clearRect(0, 0, 500, 500);
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
