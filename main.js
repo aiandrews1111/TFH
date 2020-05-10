@@ -1,4 +1,3 @@
-
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 canvas.width = canvas.height = 500;
@@ -24,8 +23,8 @@ var bulletx = 0,
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.clientX
-  var mouseY = event.clientY
+  var mouseX = event.clientX;
+  var mouseY = event.clientY;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
     
@@ -51,7 +50,7 @@ function update() {
     requestAnimationFrame(update);
     ctx.clearRect(0, 0, 500, 500);
     
-    for (i = 0; i < bullets.length; i++) {
+    for (var i = 0; i < bullets.length; i++) {
          bullets[i].draw();
     }
     //temporary location
