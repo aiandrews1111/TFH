@@ -1,3 +1,4 @@
+
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 
@@ -29,9 +30,11 @@ function update() {
     requestAnimationFrame(update);
     
     if (bulletDirX != 0){
-    bulletx += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX
-    bullety += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY
+    bulletx += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX;
+    bullety += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY;
+    ctx.beginPath();
     ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
+    ctx.fill();
     }
     //temporary location
     
@@ -81,7 +84,9 @@ function update() {
 }
 
 function shoot() {
+    ctx.beginPath();
     ctx.arc(x, y, 2, 0, Math.PI * 2);
+    ctx.fill();
     bulletDirX = x - mouseX;
     bulletDirY = y - mouseY;
     bulletx = x;
