@@ -25,8 +25,8 @@ var bulletx = 0,
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.clientX;
-  var mouseY = event.clientY;
+  var mouseX = event.clientX - canvas.offsetLeft;
+  var mouseY = event.clientY - canvas.offsetTop;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
     
@@ -43,7 +43,7 @@ Bullet.prototype.draw = function() {
 
 
 
-document.addEventListener("click", function(event){
+canvas.addEventListener("click", function(event){
     if (reloadTimer<0){
     bullets.push(new Bullet(x, y));
     reloadTimer = bulletReload;
