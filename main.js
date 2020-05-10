@@ -11,6 +11,13 @@ var x = 150,
     friction = 0.77,
     keys = [];
 
+var bulletx = 0,
+    bullety = 0,
+    bulletDirX = 0,
+    bulletSpeed = 1,
+    bulletDirY = 0;
+    
+
 function update() {
     requestAnimationFrame(update);
     
@@ -57,6 +64,22 @@ function update() {
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
+}
+
+
+button.onclick = function(shoot) {
+    ctx.arc(x, y, 2, 0, Math.PI * 2);
+    bulletDirX = x - mouseX;
+    bulletDirY = y - mouseY;
+    bulletx = x;
+    bullety = y;
+    
+  };
+
+if (bulletDirX != 0){
+    bulletx += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX
+    bullety += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY
+    ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
 }
 
 update();
