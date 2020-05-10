@@ -1,6 +1,8 @@
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 
+document.getElementById("Game").addEventListener("click", shoot);
+//gives canvas event listener
 canvas.width = canvas.height = 500;
 
 var x = 150,
@@ -26,7 +28,7 @@ function update() {
     bullety += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY
     ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
     }
-    //temporary
+    //temporary location
     
     if (keys[38] || keys[87]) {
         if (velY > -speed) {
@@ -73,13 +75,12 @@ function update() {
     ctx.fill();
 }
 
-mouseClicked = function() {
+function shoot() {
     ctx.arc(x, y, 2, 0, Math.PI * 2);
     bulletDirX = x - mouseX;
     bulletDirY = y - mouseY;
     bulletx = x;
     bullety = y;
-    //switch to mouse pressed?
 };
 
 
