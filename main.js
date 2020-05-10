@@ -2,7 +2,12 @@ var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 
 document.getElementById("Game").addEventListener("click", shoot);
+
 //gives canvas event listener
+
+var mouseX = MouseEvent.pageX;
+var mouseY = MouseEvent.pageY;
+
 canvas.width = canvas.height = 500;
 
 var x = 150,
