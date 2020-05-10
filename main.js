@@ -37,6 +37,8 @@ function update() {
     ctx.fill();
         
     console.log(bulletx);
+    console.log(bulletDirX);
+    console.log(bulletDirY);
         //debug
     }
     //temporary location
