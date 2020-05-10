@@ -13,7 +13,7 @@ var x = 150,
 var bulletx = 0,
     bullety = 0,
     bulletDirX = 0,
-    bulletSpeed = 1,
+    bulletSpeed = 5,
     bulletDirY = 0,
     bullets = [];
     
