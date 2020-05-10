@@ -36,9 +36,7 @@ function update() {
     ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
     ctx.fill();
         
-    console.log(bulletx);
-    console.log(bulletDirX);
-    console.log(bulletDirY);
+    console.log(mouseX);
         //debug
     }
     //temporary location
