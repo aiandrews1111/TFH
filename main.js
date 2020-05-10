@@ -21,6 +21,13 @@ var bulletx = 0,
 function update() {
     requestAnimationFrame(update);
     
+    if (bulletDirX != 0){
+    bulletx += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX
+    bullety += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY
+    ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
+    }
+    //temporary
+    
     if (keys[38] || keys[87]) {
         if (velY > -speed) {
             velY--;
@@ -66,21 +73,15 @@ function update() {
     ctx.fill();
 }
 
-
-function MousePressed() {
+mouseClicked = function() {
     ctx.arc(x, y, 2, 0, Math.PI * 2);
     bulletDirX = x - mouseX;
     bulletDirY = y - mouseY;
     bulletx = x;
     bullety = y;
-    
-  };
+    //switch to mouse pressed?
+};
 
-if (bulletDirX != 0){
-    bulletx += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX
-    bullety += (bulletSpeed/sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY
-    ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
-}
 
 update();
 
