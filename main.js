@@ -29,7 +29,7 @@ function Bullet(x, y) {
   this.DirY = this.y - mouseY;
     
 }
-function Bullet.prototype.draw() {
+Bullet.prototype.draw = function() {
     if (this.DirX != 0){
     this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
     this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
@@ -37,7 +37,7 @@ function Bullet.prototype.draw() {
     ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
     ctx.fill();
     }
-}
+};
 
 
 
