@@ -15,20 +15,35 @@ var bulletx = 0,
     bullety = 0,
     bulletDirX = 0,
     bulletSpeed = 1,
-    bulletDirY = 0;
+    bulletDirY = 0,
+    bullets = [];
     
 
-document.addEventListener("click", function(event){
+
+
+function Bullet(x, y) {
+  this.x = x;
+  this.y = y;
+  var mouseX = event.clientX
+  var mouseY = event.clientY
+  this.DirX = this.x - mouseX;
+  this.DirY = this.y - mouseY;
     
-    var mouseX = event.clientX
-    var mouseY = event.clientY
+}
+function Bullet.prototype.draw() {
+    if (this.DirX != 0){
+    this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
+    this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
     ctx.beginPath();
-    ctx.arc(x, y, 2, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
     ctx.fill();
-    bulletDirX = x - mouseX;
-    bulletDirY = y - mouseY;
-    bulletx = x;
-    bullety = y;
+    }
+}
+
+
+
+document.addEventListener("click", function(event){
+    bullets.push(new Bullet(x, y));
 });
 
 
@@ -36,12 +51,8 @@ function update() {
     requestAnimationFrame(update);
     ctx.clearRect(0, 0, 500, 500);
     
-    if (bulletDirX != 0){
-    bulletx += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirX;
-    bullety += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirY;
-    ctx.beginPath();
-    ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
-    ctx.fill();
+    for (i = 0; i < bullets.length; i++) {
+         bullets[i].draw();
     }
     //temporary location
     
