@@ -1,14 +1,6 @@
 
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
-
-document.getElementById("Game").addEventListener("click", shoot);
-
-//gives canvas event listener
-
-var mouseX = MouseEvent.pageX;
-var mouseY = MouseEvent.pageY;
-
 canvas.width = canvas.height = 500;
 
 var x = 150,
@@ -25,6 +17,20 @@ var bulletx = 0,
     bulletSpeed = 1,
     bulletDirY = 0;
     
+
+document.addEventListener("click", function(event){
+    
+    var mouseX = event.clientX
+    var mouseY = event.clientY
+    ctx.beginPath();
+    ctx.arc(x, y, 2, 0, Math.PI * 2);
+    ctx.fill();
+    bulletDirX = x - mouseX;
+    bulletDirY = y - mouseY;
+    bulletx = x;
+    bullety = y;
+});
+
 
 function update() {
     requestAnimationFrame(update);
@@ -86,15 +92,6 @@ function update() {
     ctx.fill();
 }
 
-function shoot() {
-    ctx.beginPath();
-    ctx.arc(x, y, 2, 0, Math.PI * 2);
-    ctx.fill();
-    bulletDirX = x - mouseX;
-    bulletDirY = y - mouseY;
-    bulletx = x;
-    bullety = y;
-};
 
 
 update();
