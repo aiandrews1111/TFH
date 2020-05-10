@@ -67,7 +67,7 @@ function update() {
 }
 
 
-button.onclick = function(shoot) {
+var button.onclick = function(shoot) {
     ctx.arc(x, y, 2, 0, Math.PI * 2);
     bulletDirX = x - mouseX;
     bulletDirY = y - mouseY;
