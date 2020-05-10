@@ -30,8 +30,8 @@ function update() {
     requestAnimationFrame(update);
     
     if (bulletDirX != 0){
-    bulletx += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirX;
-    bullety += (bulletSpeed/Math.sqrt(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2)))*bulletDirY;
+    bulletx += (bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirX;
+    bullety += (bulletSpeed/Math.sqrt(Math.abs(Math.pow(bulletDirX, 2) + Math.pow(bulletDirY, 2))))*bulletDirY;
     ctx.beginPath();
     ctx.arc(bulletx, bullety, 2, 0, Math.PI * 2);
     ctx.fill();
