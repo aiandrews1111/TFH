@@ -200,20 +200,20 @@ function update() {
         if ((regularEnemySpawnRate-600)/100 % 5 != 0){
         enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
         }
-        if (regularEnemySpawnRate == 900){
+        if (regularEnemySpawnRate == 800){
             enemies.push(new Enemy(120, 50, 2));
-        } else if (regularEnemySpawnRate == 1200){
+        } else if (regularEnemySpawnRate == 1100){
             enemies.push(new Enemy(240, 100, 1));
-        } else if (regularEnemySpawnRate == 1500){
+        } else if (regularEnemySpawnRate == 1400){
             enemies.push(new Enemy(500, 125, 2));
-        } else if (regularEnemySpawnRate == 1800){
+        } else if (regularEnemySpawnRate == 1700){
             enemies.push(new Enemy(2000, 100, 0.5));
-        } else if (regularEnemySpawnRate == 2100){
+        } else if (regularEnemySpawnRate == 2000){
             enemies.push(new Enemy(500, 125, 2));
             enemies.push(new Enemy(500, 125, 2));
-        } else if (regularEnemySpawnRate == 2400){
+        } else if (regularEnemySpawnRate == 2300){
             enemies.push(new Enemy(4000, 75, 0.3));
-        } else if (regularEnemySpawnRate == 2700){
+        } else if (regularEnemySpawnRate == 2600){
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
