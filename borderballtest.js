@@ -54,13 +54,13 @@ Borderball.prototype.draw = function() {
     this.x = 500 - this.size
   }
   
-  if (this.x >= 0 && this.y = this.size){
+  if (this.x >= 0 && this.y == this.size){
     this.x = this.x + this.speed
-  } else if (this.x >= 0 && this.y = 500-this.size){
+  } else if (this.x >= 0 && this.y == 500-this.size){
     this.x = this.x - this.speed
-  } else if (this.x = this.size && this.y >= 0){
+  } else if (this.x == this.size && this.y >= 0){
     this.y = this.y + this.speed
-  } else if (this.x = 500-this.size && this.y >= 0){
+  } else if (this.x == 500-this.size && this.y >= 0){
     this.y = this.y - this.speed
   }
   ctx.beginPath();
