@@ -197,18 +197,21 @@ function update() {
     
     
     if (time==0){
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(25, 25, 1));
     }
-    if (time==300){
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
-        enemies.push(new Enemy(60, 10, 1));
+    if (time==500){
+        enemies.push(new Enemy(45, 25, 1.2));
+        enemies.push(new Enemy(45, 25, 1.2));
+        enemies.push(new Enemy(45, 25, 1.2));
+        enemies.push(new Enemy(45, 25, 1.2));
+        enemies.push(new Enemy(45, 25, 1.2));
+    }
+    if (time==1300){
+        enemies.push(new Enemy(175, 50, 1.8));
     }
     time++;
 }
