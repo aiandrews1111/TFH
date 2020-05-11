@@ -91,7 +91,6 @@ Enemy.prototype.draw = function() {
          var distx = bullets[i].x - this.x;
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
-         console.log(dist);
          if (dist<this.size + 2){
              this.hp -= bulletDamage;
              bullets[i].delete = 1;
@@ -190,6 +189,7 @@ function update() {
     
     reloadTimer --;
     
+    console.log(regularEnemySpawnRate);
     
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
