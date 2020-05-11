@@ -114,6 +114,7 @@ Enemy.prototype.draw = function() {
     ctx.fillStyle = "black";
     ctx.fill();
     
+    console.log(this.hp);
     
     
     if (this.hp < 0){
