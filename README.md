@@ -1,1 +1,1 @@
-# yes i did u nob
+#cursed project
