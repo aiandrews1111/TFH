@@ -34,6 +34,7 @@ function Bullet(x, y) {
   var mouseY = event.clientY - canvas.offsetTop;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
+  this.delete = 0;
     
 }
 Bullet.prototype.draw = function() {
@@ -45,8 +46,7 @@ Bullet.prototype.draw = function() {
     ctx.fill();
     }
     if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
-       this.delete = bullets.indexOf(Bullet);
-       bullets = bullets.splice(this.delete, 1);
+       this.delete = 1;
     }
 };
 
@@ -116,8 +116,6 @@ Enemy.prototype.draw = function() {
     ctx.fillStyle = "black";
     ctx.fill();
     
-    console.log(this.hp);
-    
     
     if (this.hp < 0){
        this.delete = 1;
@@ -139,6 +137,9 @@ function update() {
     ctx.clearRect(0, 0, 500, 500);
     for (var i = 0; i < bullets.length; i++) {
          bullets[i].draw();
+         if(bullets[i].delete == 1){
+             bullets.splice(i, 1);
+         }
     }
     for (var i = 0; i < enemies.length; i++) {
          enemies[i].draw();
