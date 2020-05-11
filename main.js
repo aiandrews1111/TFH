@@ -254,13 +254,7 @@ function update() {
             enemies.push(new Enemy(30, 15, 0.5));
             enemies.push(new Enemy(30, 15, 0.5));
             enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
+            
             
         }
         wave--;
