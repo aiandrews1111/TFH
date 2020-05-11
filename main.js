@@ -14,7 +14,8 @@ var bulletSpeed = 5,
     reloadTimer = 0,
     bulletDamage = 10,
     bulletReload = 15,
-    bullets = [];
+    bullets = [],
+    wave = 0;
 
 var enemies = [];
 var regularEnemySpawnRate = 600;
@@ -221,6 +222,11 @@ function update() {
         }
         time = 0;
     }
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "red";
+    ctx.textAlign = "center";
+    wave = regularEnemySpawnRate/100 - 5;
+    ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
     time++;
 }
 
