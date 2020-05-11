@@ -192,55 +192,58 @@ function update() {
     
     reloadTimer --;
     
-    
+
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
     }
+    
+    wave = regularEnemySpawnRate/100 - 5;
+    
     if (time >= regularEnemySpawnRate){
         regularEnemySpawnRate += 100;
-        enemies.push(new Enemy(time/20, 18+time/500, 1.5 + time/2500));
-        if (regularEnemySpawnRate == 800){
+        enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        if (wave == 3){
             enemies.push(new Enemy(120, 35, 2));
-        } else if (regularEnemySpawnRate == 1100){
+        } else if (wave == 6){
             enemies.push(new Enemy(240, 35, 1));
-        } else if (regularEnemySpawnRate == 1400){
+        } else if (wave == 9){
             enemies.push(new Enemy(500, 35, 2));
-        } else if (regularEnemySpawnRate == 1700){
+        } else if (wave == 12){
             enemies.push(new Enemy(600, 35, 0.5));
-        } else if (regularEnemySpawnRate == 2000){
+        } else if (wave == 15){
             enemies.push(new Enemy(400, 35, 2));
             enemies.push(new Enemy(400, 35, 2));
-        } else if (regularEnemySpawnRate == 2300){
+        } else if (wave == 18){
             enemies.push(new Enemy(1000, 50, 0.3));
-        } else if (regularEnemySpawnRate == 2600){
-            enemies.push(new Enemy(250, 35, 5));
-            enemies.push(new Enemy(250, 35, 5));
-            enemies.push(new Enemy(250, 45, 5));
-            enemies.push(new Enemy(250, 45, 5));
+        } else if (wave == 21){
+            enemies.push(new Enemy(150, 35, 3));
+            enemies.push(new Enemy(150, 35, 3));
+            enemies.push(new Enemy(150, 45, 3));
+            enemies.push(new Enemy(150, 45, 3));
             
-        } else if (regularEnemySpawnRate == 2900){
-            enemies.push(new Enemy(350, 45, 6));
-            enemies.push(new Enemy(350, 45, 6));
-            enemies.push(new Enemy(350, 45, 6));
-            enemies.push(new Enemy(350, 45, 6));
+        } else if (wave == 24){
+            enemies.push(new Enemy(200, 45, 3.5));
+            enemies.push(new Enemy(200, 45, 3.5));
+            enemies.push(new Enemy(200, 45, 3.5));
+            enemies.push(new Enemy(200, 45, 3.5));
             
-        } else if (regularEnemySpawnRate == 3200){
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
-            enemies.push(new Enemy(150, 15, 1));
+        } else if (wave == 27){
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
+            enemies.push(new Enemy(80, 15, 0.5));
             
         }
         time = 0;
@@ -251,7 +254,6 @@ function update() {
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "red";
     ctx.textAlign = "center";
-    wave = regularEnemySpawnRate/100 - 5;
     if (wave%3!=0){
     ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
     }
