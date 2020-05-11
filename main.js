@@ -97,8 +97,9 @@ Enemy.prototype.draw = function() {
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
          console.log(dist);
-         if (dist<this.size/2 + 1){
+         if (dist<this.size + 2){
              this.hp -= bulletDamage;
+             bullets[i].delete = 1;
          }
     }
     
