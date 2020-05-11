@@ -21,6 +21,8 @@ var bulletx = 0,
     bullets = [];
 
 var enemies = [];
+
+var time = 0;
     
 
 
@@ -185,6 +187,12 @@ function update() {
     ctx.fill();
     
     reloadTimer --;
+    
+    
+    if (time==0){
+        enemies.push(new Enemy(50, 50, 3));
+    }
+    time++;
 }
 
 
