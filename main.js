@@ -197,7 +197,18 @@ function update() {
     
     
     if (time==0){
-        enemies.push(new Enemy(50, 50, 3));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+    }
+    if (time==300){
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
+        enemies.push(new Enemy(60, 10, 1));
     }
     time++;
 }
