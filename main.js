@@ -45,7 +45,7 @@ Bullet.prototype.draw = function() {
     }
 };
 
-function regularEnemy(hp, size, speed) {
+function Enemy(hp, size, speed) {
     this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
@@ -192,17 +192,17 @@ function update() {
     
     
     if (time==0){
-        enemies.push(new regularEnemy(25, 25, 1));
+        enemies.push(new Enemy(25, 25, 1));
     }
     if (time % regularEnemySpawnRate == 0){
         regularEnemySpawnRate += 100;
         if (regularEnemySpawnRate-600 % 5 != 0){
-        enemies.push(new regularEnemy(time/20, 20+time/500, 1.5 + time/2500));
+        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
         }
         if (regularEnemySpawnRate == 1100){
-            enemies.push(new regularEnemy(120, 50, 2));
+            enemies.push(new Enemy(120, 50, 2));
         } else if (regularEnemySpawnRate == 1600){
-            enemies.push(new regularEnemy(240, 100, 1));
+            enemies.push(new Enemy(240, 100, 1));
         }
     }
     time++;
