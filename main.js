@@ -49,8 +49,8 @@ function Enemy(hp, size, speed) {
     this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
-    this.x = Math.random()*500;
-    this.y = Math.random()*500;
+    this.x = 250 + Math.random()*(125-this.size);
+    this.y = 250 + Math.random()*(125-this.size);
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
     this.speed = speed;
