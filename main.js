@@ -19,8 +19,6 @@ var bulletSpeed = 5,
 var enemies = [];
 
 var time = 0;
-    
-
 
 
 function Bullet(x, y) {
@@ -75,16 +73,16 @@ Enemy.prototype.draw = function() {
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size/2){
+    if (this.x>500-this.size){
         this.goingright = 0;
     }
-    if (this.y>500-this.size/2){
+    if (this.y>500-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size/2){
+    if (this.x<0+this.size){
         this.goingright = 1;
     }
-    if (this.y<0+this.size/2){
+    if (this.y<0+this.size){
         this.goingup = 0;
     }
 
