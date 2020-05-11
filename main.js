@@ -195,19 +195,10 @@ function update() {
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
         enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new Enemy(25, 25, 1));
     }
-    if (time==500){
-        enemies.push(new Enemy(45, 25, 1.2));
-        enemies.push(new Enemy(45, 25, 1.2));
-        enemies.push(new Enemy(45, 25, 1.2));
-        enemies.push(new Enemy(45, 25, 1.2));
-        enemies.push(new Enemy(45, 25, 1.2));
-    }
-    if (time==1300){
-        enemies.push(new Enemy(175, 50, 1.8));
+    if (enemies.length == 0){
+        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
+        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
     }
     time++;
 }
