@@ -248,7 +248,21 @@ function update() {
     if (time >= regularEnemySpawnRate){
         wave++;
         regularEnemySpawnRate += 100;
+        if (wave < 30){
         enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        } else if (wave > 30 && wave < 60){
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        } else if (wave > 60 && wave < 90){
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        } else if (wave > 90 && wave < 120){
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+          enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        } 
         if (wave == 3){
             enemies.push(new Enemy(120, 35, 2));
         } else if (wave == 6){
