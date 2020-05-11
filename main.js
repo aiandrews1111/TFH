@@ -16,8 +16,11 @@ var bulletx = 0,
     bulletSpeed = 5,
     bulletDirY = 0,
     reloadTimer = 0,
+    bulletDamage = 10;
     bulletReload = 60,
     bullets = [];
+
+var enemies = [];
     
 
 
@@ -45,6 +48,78 @@ Bullet.prototype.draw = function() {
     }
 };
 
+function Enemy(hp, size, speed) {
+    this.maxhp = hp;
+    this.hp = this.maxhp;
+    this.size = size;
+    this.x = Math.random()*500;
+    this.y = Math.random()*500;
+    this.speedx = Math.random() + 0.5;
+    this.speedy = Math.random() + 0.5;
+    this.speed = speed;
+    this.speedx*=this.speed;
+    this.speedy*=this.speed;
+    this.goingright = Math.round(Math.random());
+    this.goingup = Math.round(Math.random());
+}
+Enemy.prototype.draw = function() {
+    if (this.goingright == 1){
+        this.x+=this.speedx;
+    }
+    else{
+        this.x-=this.speedx;
+    }
+    if (this.goingup == 1){
+        this.y-=this.speedy;
+    }
+    else{
+        this.y+=this.speedy;
+    }
+    
+    if (this.x>500-this.size/2){
+        this.goingright = 0;
+    }
+    if (this.y>500-this.size/2){
+        this.goingup = 0;
+    }
+    if (this.x<0+this.size/2){
+        this.goingright = 1;
+    }
+    if (this.y<0+this.size/2){
+        this.goingup = 1;
+    }
+
+    for (var i = 0; i < bullets.length; i++) {
+         var distx = bullets[i].x - this.x;
+         var disty = bullets[i].y - this.y;
+         var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         if (dist<this.size/2){
+             this.hp -= bulletDamage;
+         }
+    }
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    
+    
+    
+    if (hp < 0){
+       this.delete = enemies.indexOf(Enemy);
+       enemies = enemies.splice(this.delete, 1);
+    }
+};
+
 
 
 canvas.addEventListener("click", function(event){
@@ -60,6 +135,9 @@ function update() {
     ctx.clearRect(0, 0, 500, 500);
     for (var i = 0; i < bullets.length; i++) {
          bullets[i].draw();
+    }
+    for (var i = 0; i < enemies.length; i++) {
+         enemies[i].draw();
     }
     //temporary location
     
