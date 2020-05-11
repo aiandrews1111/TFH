@@ -16,7 +16,7 @@ var bulletx = 0,
     bulletSpeed = 5,
     bulletDirY = 0,
     reloadTimer = 0,
-    bulletDamage = 10;
+    bulletDamage = 10,
     bulletReload = 60,
     bullets = [];
 
@@ -116,7 +116,7 @@ Enemy.prototype.draw = function() {
     
     
     
-    if (hp < 0){
+    if (this.hp < 0){
        this.delete = enemies.indexOf(Enemy);
        enemies = enemies.splice(this.delete, 1);
     }
