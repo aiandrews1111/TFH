@@ -64,7 +64,7 @@ Borderball.prototype.draw = function() {
     this.y = this.y - this.speed
   }
   ctx.beginPath();
-  ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
   ctx.fill();
 };
 
