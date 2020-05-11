@@ -43,6 +43,7 @@ function Bullet(x, y) {
 }
 
 Borderball.prototype.draw = function() {
+  this.speed = 1 + wave/15
   if (this.y - this.size < 0){
     this.y = this.size
   } else if (this.y + this.size > 500){
