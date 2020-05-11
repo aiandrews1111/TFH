@@ -19,10 +19,17 @@ var bulletSpeed = 5,
     chosen = 0;
 
 var enemies = [];
+var borderballs = [];
 var regularEnemySpawnRate = 600;
 
 var time = 0;
 
+function Borderball(x, y, speed, size){
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.speed = speed;
+}
 
 function Bullet(x, y) {
   this.x = x;
@@ -34,6 +41,34 @@ function Bullet(x, y) {
   this.delete = 0;
     
 }
+
+Borderball.prototype.draw = function() {
+  if (this.y - this.size < 0){
+    this.y = this.size
+  } else if (this.y + this.size > 500){
+    this.y = 500 - this.size
+  }
+  if (this.x - this.size < 0){
+    this.x = this.size
+  } else if (this.x + this.size > 500){
+    this.x = 500 - this.size
+  }
+  
+  if (this.x != 500-this.size && this.y == this.size){
+    this.x = this.x + this.speed
+  } else if (this.x != this.size && this.y == 500-this.size){
+    this.x = this.x - this.speed
+  } else if (this.x == this.size && this.y != this.size){
+    this.y = this.y - this.speed
+  } else if (this.x == 500-this.size && this.y != 500-this.size){
+    this.y = this.y + this.speed
+  }
+
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+  ctx.fill();
+};
+
 Bullet.prototype.draw = function() {
     if (this.DirX != 0){
     this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
@@ -145,7 +180,10 @@ function update() {
              enemies.splice(i, 1);
          }
     }
-    //temporary location
+    for (var i = 0; i < borderballs.length; i++) {
+         borderballs[i].draw();
+     }
+
     
     if (keys[38] || keys[87]) {
         if (velY > -speed) {
@@ -195,6 +233,10 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
+        borderballs.push(new Borderball(20, 20, 1, 20));
+        borderballs.push(new Borderball(480, 20, 1, 20));
+        borderballs.push(new Borderball(20, 480, 1, 20));
+        borderballs.push(new Borderball(480, 480, 1, 20));
     }
     
     wave = regularEnemySpawnRate/100 - 5;
