@@ -205,6 +205,11 @@ function update() {
             enemies.push(new Enemy(240, 100, 1));
         } else if (regularEnemySpawnRate == 2100){
             enemies.push(new Enemy(500, 125, 2));
+        } else if (regularEnemySpawnRate == 2600){
+            enemies.push(new Enemy(2000, 100, 0.5));
+        } else if (regularEnemySpawnRate == 3100){
+            enemies.push(new Enemy(500, 125, 2));
+            enemies.push(new Enemy(500, 125, 2));
         }
         time = 0;
     }
