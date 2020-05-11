@@ -1,1 +1,1 @@
-#cursed project
+#cursed project lmao
