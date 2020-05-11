@@ -42,7 +42,6 @@ Bullet.prototype.draw = function() {
     if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
        this.delete = bullets.indexOf(Bullet);
        bullets = bullets.splice(this.delete, 1);
-       console.log(bullets);
     }
 };
 
