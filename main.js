@@ -195,7 +195,7 @@ function update() {
         enemies.push(new regularEnemy(25, 25, 1));
     }
     if (time % regularEnemySpawnRate == 0){
-        regularEnemySpawnRate += 100
+        regularEnemySpawnRate += 100;
         if (regularEnemySpawnRate-600 % 5 != 0){
         enemies.push(new regularEnemy(time/20, 20+time/500, 1.5 + time/2500));
         }
