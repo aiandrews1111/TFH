@@ -39,6 +39,10 @@ Bullet.prototype.draw = function() {
     ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
     ctx.fill();
     }
+    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
+       this.delete = bullet.indexOf(Bullet);
+       var bullets = bullets.splice(this.delete, 1);
+    }
 };
 
 
