@@ -82,13 +82,13 @@ Enemy.prototype.draw = function() {
         this.goingright = 0;
     }
     if (this.y>500-this.size/2){
-        this.goingup = 0;
+        this.goingup = 1;
     }
     if (this.x<0+this.size/2){
         this.goingright = 1;
     }
     if (this.y<0+this.size/2){
-        this.goingup = 1;
+        this.goingup = 0;
     }
 
     for (var i = 0; i < bullets.length; i++) {
