@@ -63,6 +63,7 @@ function Enemy(hp, size, speed) {
     this.speedy*=this.speed;
     this.goingright = Math.round(Math.random());
     this.goingup = Math.round(Math.random());
+    this.delete = 0;
 }
 Enemy.prototype.draw = function() {
     if (this.goingright == 1){
@@ -118,8 +119,7 @@ Enemy.prototype.draw = function() {
     
     
     if (this.hp < 0){
-       this.delete = enemies.indexOf(Enemy);
-       enemies = enemies.splice(this.delete, 1);
+       this.delete = 1;
     }
 };
 
@@ -141,6 +141,9 @@ function update() {
     }
     for (var i = 0; i < enemies.length; i++) {
          enemies[i].draw();
+         if(enemies[i].delete == 1){
+             enemies.splice(i, 1);
+         }
     }
     //temporary location
     
