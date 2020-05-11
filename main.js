@@ -227,6 +227,7 @@ function update() {
     ctx.textAlign = "center";
     wave = regularEnemySpawnRate/100 - 5;
     ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
+    ctx.fillStyle = "black";
     time++;
 }
 
