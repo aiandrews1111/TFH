@@ -214,10 +214,10 @@ function update() {
         } else if (regularEnemySpawnRate == 2300){
             enemies.push(new Enemy(4000, 50, 0.3));
         } else if (regularEnemySpawnRate == 2600){
-            enemies.push(new Enemy(500, 45, 5));
-            enemies.push(new Enemy(500, 45, 5));
-            enemies.push(new Enemy(500, 45, 5));
-            enemies.push(new Enemy(500, 45, 5));
+            enemies.push(new Enemy(250, 35, 5));
+            enemies.push(new Enemy(250, 35, 5));
+            enemies.push(new Enemy(250, 45, 5));
+            enemies.push(new Enemy(250, 45, 5));
             
         }
         time = 0;
