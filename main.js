@@ -374,6 +374,26 @@ function update() {
             
             
             
+        } else if (wave == 36){
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            enemies.push(new Enemy(20, 15, 2.5));
+            
+            
         }
         wave--;
         time = 0;
