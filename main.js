@@ -222,11 +222,19 @@ function update() {
         }
         time = 0;
     }
+    if (enemies.length == 0){
+        time = regularEnemySpawnRate - 10;
+    }
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "red";
     ctx.textAlign = "center";
     wave = regularEnemySpawnRate/100 - 5;
+    if (wave%5!=0){
     ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
+    }
+    else{
+    ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
+    }
     ctx.fillStyle = "black";
     time++;
 }
