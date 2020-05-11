@@ -206,6 +206,9 @@ function update() {
             velX--;
         }
     }
+    if (keys[69]) {
+        enemies = [];
+    }
 
     velY *= friction;
     y += velY;
