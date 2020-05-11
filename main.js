@@ -200,6 +200,7 @@ function update() {
     wave = regularEnemySpawnRate/100 - 5;
     
     if (time >= regularEnemySpawnRate){
+        wave++;
         regularEnemySpawnRate += 100;
         enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
         if (wave == 3){
@@ -246,6 +247,7 @@ function update() {
             enemies.push(new Enemy(80, 15, 0.5));
             
         }
+        wave--;
         time = 0;
     }
     if (enemies.length == 0){
