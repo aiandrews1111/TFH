@@ -191,12 +191,14 @@ function update() {
     
     
     if (time==0){
-        enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(25, 10, 1));
+        enemies.push(new Enemy(25, 10, 1));
     }
-    if (enemies.length == 0){
+    if (time % 300 == 0){
         enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
-        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
+        if (time == 1200){
+            enemies.push(new Enemy(120, 50, 2));
+        }
     }
     time++;
 }
