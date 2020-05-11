@@ -301,6 +301,79 @@ function update() {
             enemies.push(new Enemy(30, 15, 0.5));
             
             
+        }  else if (wave == 30){
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5)); 
+        }  else if (wave == 33){
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(200, 25, 5));
+            
+            
+            
         }
         wave--;
         time = 0;
