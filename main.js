@@ -10,14 +10,10 @@ var x = 150,
     friction = 0.77,
     keys = [];
 
-var bulletx = 0,
-    bullety = 0,
-    bulletDirX = 0,
-    bulletSpeed = 5,
-    bulletDirY = 0,
+var bulletSpeed = 5,
     reloadTimer = 0,
     bulletDamage = 10,
-    bulletReload = 60,
+    bulletReload = 15,
     bullets = [];
 
 var enemies = [];
