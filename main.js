@@ -198,21 +198,21 @@ function update() {
     if (time >= regularEnemySpawnRate){
         regularEnemySpawnRate += 100;
         if ((regularEnemySpawnRate-600)/100 % 5 != 0){
-        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
+        enemies.push(new Enemy(time/20, 18+time/500, 1.5 + time/2500));
         }
         if (regularEnemySpawnRate == 800){
-            enemies.push(new Enemy(120, 50, 2));
+            enemies.push(new Enemy(120, 35, 2));
         } else if (regularEnemySpawnRate == 1100){
-            enemies.push(new Enemy(240, 100, 1));
+            enemies.push(new Enemy(240, 35, 1));
         } else if (regularEnemySpawnRate == 1400){
-            enemies.push(new Enemy(500, 125, 2));
+            enemies.push(new Enemy(500, 35, 2));
         } else if (regularEnemySpawnRate == 1700){
-            enemies.push(new Enemy(2000, 100, 0.5));
+            enemies.push(new Enemy(2000, 35, 0.5));
         } else if (regularEnemySpawnRate == 2000){
-            enemies.push(new Enemy(500, 125, 2));
-            enemies.push(new Enemy(500, 125, 2));
+            enemies.push(new Enemy(500, 35, 2));
+            enemies.push(new Enemy(500, 35, 2));
         } else if (regularEnemySpawnRate == 2300){
-            enemies.push(new Enemy(4000, 75, 0.3));
+            enemies.push(new Enemy(4000, 50, 0.3));
         } else if (regularEnemySpawnRate == 2600){
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
