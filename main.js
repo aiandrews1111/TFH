@@ -142,7 +142,7 @@ Enemy.prototype.draw = function() {
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "grey";
     ctx.fill();
     
     ctx.beginPath();
