@@ -198,9 +198,7 @@ function update() {
     }
     if (time >= regularEnemySpawnRate){
         regularEnemySpawnRate += 100;
-        if ((regularEnemySpawnRate-600)/100 % 5 != 0){
         enemies.push(new Enemy(time/20, 18+time/500, 1.5 + time/2500));
-        }
         if (regularEnemySpawnRate == 800){
             enemies.push(new Enemy(120, 35, 2));
         } else if (regularEnemySpawnRate == 1100){
@@ -208,17 +206,41 @@ function update() {
         } else if (regularEnemySpawnRate == 1400){
             enemies.push(new Enemy(500, 35, 2));
         } else if (regularEnemySpawnRate == 1700){
-            enemies.push(new Enemy(2000, 35, 0.5));
+            enemies.push(new Enemy(600, 35, 0.5));
         } else if (regularEnemySpawnRate == 2000){
-            enemies.push(new Enemy(500, 35, 2));
-            enemies.push(new Enemy(500, 35, 2));
+            enemies.push(new Enemy(400, 35, 2));
+            enemies.push(new Enemy(400, 35, 2));
         } else if (regularEnemySpawnRate == 2300){
-            enemies.push(new Enemy(4000, 50, 0.3));
+            enemies.push(new Enemy(1000, 50, 0.3));
         } else if (regularEnemySpawnRate == 2600){
             enemies.push(new Enemy(250, 35, 5));
             enemies.push(new Enemy(250, 35, 5));
             enemies.push(new Enemy(250, 45, 5));
             enemies.push(new Enemy(250, 45, 5));
+            
+        } else if (regularEnemySpawnRate == 2900){
+            enemies.push(new Enemy(350, 45, 6));
+            enemies.push(new Enemy(350, 45, 6));
+            enemies.push(new Enemy(350, 45, 6));
+            enemies.push(new Enemy(350, 45, 6));
+            
+        } else if (regularEnemySpawnRate == 3200){
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
+            enemies.push(new Enemy(150, 15, 1));
             
         }
         time = 0;
@@ -236,7 +258,8 @@ function update() {
     else{
     ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
-    ctx.fillText(time, canvas.width/2, canvas.height/2+50);
+
+    
     
     ctx.fillStyle = "black";
     time++;
