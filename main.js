@@ -195,25 +195,25 @@ function update() {
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
     }
-    if (time == regularEnemySpawnRate){
+    if (time >= regularEnemySpawnRate){
         regularEnemySpawnRate += 100;
         if ((regularEnemySpawnRate-600)/100 % 5 != 0){
         enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
         }
-        if (regularEnemySpawnRate == 1100){
+        if (regularEnemySpawnRate == 900){
             enemies.push(new Enemy(120, 50, 2));
-        } else if (regularEnemySpawnRate == 1600){
+        } else if (regularEnemySpawnRate == 1200){
             enemies.push(new Enemy(240, 100, 1));
+        } else if (regularEnemySpawnRate == 1500){
+            enemies.push(new Enemy(500, 125, 2));
+        } else if (regularEnemySpawnRate == 1800){
+            enemies.push(new Enemy(2000, 100, 0.5));
         } else if (regularEnemySpawnRate == 2100){
             enemies.push(new Enemy(500, 125, 2));
-        } else if (regularEnemySpawnRate == 2600){
-            enemies.push(new Enemy(2000, 100, 0.5));
-        } else if (regularEnemySpawnRate == 3100){
             enemies.push(new Enemy(500, 125, 2));
-            enemies.push(new Enemy(500, 125, 2));
-        } else if (regularEnemySpawnRate == 3600){
+        } else if (regularEnemySpawnRate == 2400){
             enemies.push(new Enemy(4000, 75, 0.3));
-        } else if (regularEnemySpawnRate == 4100){
+        } else if (regularEnemySpawnRate == 2700){
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
@@ -223,7 +223,7 @@ function update() {
         time = 0;
     }
     if (enemies.length == 0){
-        time = regularEnemySpawnRate - 10;
+        time = regularEnemySpawnRate;
     }
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "red";
@@ -235,6 +235,8 @@ function update() {
     else{
     ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
+    ctx.fillText(time, canvas.width/2, canvas.height/2+50);
+    
     ctx.fillStyle = "black";
     time++;
 }
