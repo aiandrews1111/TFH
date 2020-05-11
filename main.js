@@ -271,7 +271,6 @@ function update() {
 }
 
 
-
 update();
 
 document.body.addEventListener("keydown", function (e) {
