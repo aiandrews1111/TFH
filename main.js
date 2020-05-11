@@ -75,7 +75,7 @@ Bullet.prototype.draw = function() {
     this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
     this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
     ctx.fill();
     }
     if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
@@ -216,20 +216,20 @@ function update() {
     velX *= friction;
     x += velX;
 
-    if (x >= 495) {
-        x = 495;
-    } else if (x <= 5) {
-        x = 5;
+    if (x >= 493) {
+        x = 493;
+    } else if (x <= 7) {
+        x = 7;
     }
 
-    if (y > 495) {
-        y = 495;
-    } else if (y <= 5) {
-        y = 5;
+    if (y > 493) {
+        y = 493;
+    } else if (y <= 7) {
+        y = 7;
     }
     
     ctx.beginPath();
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.arc(x, y, 7, 0, Math.PI * 2);
     ctx.fill();
     
     reloadTimer --;
@@ -417,7 +417,7 @@ function update() {
         time = regularEnemySpawnRate;
     }
     ctx.font = "30px Comic Sans MS";
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "white";
     ctx.textAlign = "center";
     if (wave%3!=0){
     ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
