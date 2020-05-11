@@ -15,7 +15,8 @@ var bulletSpeed = 5,
     bulletDamage = 10,
     bulletReload = 15,
     bullets = [],
-    wave = 0;
+    wave = 0,
+    chosen = 0;
 
 var enemies = [];
 var regularEnemySpawnRate = 600;
@@ -239,6 +240,29 @@ function update() {
     
     ctx.fillStyle = "black";
     time++;
+    if (chosen==0){
+        alert("Enter what class you would like in the following box. If you are a dev, enter dev code below.");
+        var chose = prompt("Allowed are - Gunner, Sniper. (Please use lowercase)");
+        if (chose=="gunner"){
+            bulletSpeed = 5,
+            reloadTimer = 0,
+            bulletDamage = 10,
+            bulletReload = 15,
+        }
+        else if (choose=="sniper"){
+            bulletSpeed = 8,
+            reloadTimer = 0,
+            bulletDamage = 30,
+            bulletReload = 50,
+        }
+        else if (choose=="frenzyhodgehahatransi"){
+            bulletSpeed = 10,
+            reloadTimer = 0,
+            bulletDamage = 100,
+            bulletReload = 5,
+        }
+    }
+    chosen++;
 }
 
 
