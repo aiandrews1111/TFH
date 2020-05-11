@@ -35,14 +35,12 @@ Bullet.prototype.draw = function() {
     if (this.DirX != 0){
     this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
     this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
-    ctx.beginPath();
     ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
     ctx.fill();
     }
     if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
        this.delete = bullet.indexOf(Bullet);
        var bullets = bullets.splice(this.delete, 1);
-       console.log(bullets);
     }
 };
 
@@ -59,7 +57,7 @@ canvas.addEventListener("click", function(event){
 function update() {
     requestAnimationFrame(update);
     ctx.clearRect(0, 0, 500, 500);
-    
+    ctx.beginPath();
     for (var i = 0; i < bullets.length; i++) {
          bullets[i].draw();
     }
@@ -103,8 +101,7 @@ function update() {
     } else if (y <= 5) {
         y = 5;
     }
-
-    ctx.beginPath();
+    
     ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
     
