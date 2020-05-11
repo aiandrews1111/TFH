@@ -91,6 +91,7 @@ Enemy.prototype.draw = function() {
          var distx = bullets[i].x - this.x;
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         console.log(dist);
          if (dist<this.size + 2){
              this.hp -= bulletDamage;
              bullets[i].delete = 1;
@@ -189,7 +190,6 @@ function update() {
     
     reloadTimer --;
     
-    console.log(regularEnemySpawnRate);
     
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
@@ -211,7 +211,7 @@ function update() {
             enemies.push(new Enemy(500, 125, 2));
             enemies.push(new Enemy(500, 125, 2));
         } else if (regularEnemySpawnRate == 3600){
-            enemies.push(new Enemy(5000, 75, 0.3));
+            enemies.push(new Enemy(4000, 75, 0.3));
         } else if (regularEnemySpawnRate == 4100){
             enemies.push(new Enemy(500, 45, 5));
             enemies.push(new Enemy(500, 45, 5));
