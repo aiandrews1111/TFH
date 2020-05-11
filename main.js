@@ -197,14 +197,14 @@ function update() {
     if (time == regularEnemySpawnRate){
         regularEnemySpawnRate += 100;
         if ((regularEnemySpawnRate-600)/100 % 5 != 0){
-        enemies.push(new Enemy(regularEnemySpawnRate/20, 20+regularEnemySpawnRate/500, 1.5 + regularEnemySpawnRate/2500));
+        enemies.push(new Enemy(time/20, 20+time/500, 1.5 + time/2500));
         }
         if (regularEnemySpawnRate == 1100){
             enemies.push(new Enemy(120, 50, 2));
         } else if (regularEnemySpawnRate == 1600){
             enemies.push(new Enemy(240, 100, 1));
         }
-        var time = 0;
+        time = 0;
     }
     time++;
 }
