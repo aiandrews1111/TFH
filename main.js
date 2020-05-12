@@ -18,7 +18,10 @@ var bulletSpeed = 5,
     wave = 1,
     chosen = 0;
 
-var upgrades = [0, 0, 0, 0, 0, 0, 0];
+var needed = [1, 2, 3, 5, 8, 13, 21, 34, 0];
+var tokenneeded = [0, 0, 0, 0, 0, 0, 1, 1, 100000000];
+
+var attributes = [0, 0, 0, 0, 0, 0, 0];
 
 var hp = 70,
     maxhp = 70,
@@ -431,10 +434,234 @@ function update() {
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
     
-    ctx.fillText("Points: "+upgradepoints, 100, 100);
+
+    
+        ctx.font = "18px Comic Sans MS";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("Attributes", 65, 40);
+    ctx.font = "12px Comic Sans MS";
+    ctx.fillText("Points: "+upgradepoints, 61, 60);
+    ctx.fillText("Tokens: "+bosstokens, 60, 75);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.strokeStyle = "black";
+        
+
+        
+    ctx.beginPath();
+    ctx.arc(45, 110, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 190, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 270, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 350, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 150, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 230, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 310, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+        
+    ctx.fillRect(15, 25, 100, 355);
+    ctx.fillStyle = "rgb(219, 119, 119)";
+    ctx.fill();
+        
+    
+    ctx.strokeStyle = "transparent";
+    ctx.beginPath();
+    ctx.arc(45, 110, 50, 50, 0, 360 * upgradepoints/needed[attributes[0]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 150, 50, 50, 0, 360 * upgradepoints/needed[attributes[1]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 190, 50, 50, 0, 360 * upgradepoints/needed[attributes[2]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 230, 50, 50, 0, 360 * upgradepoints/needed[attributes[3]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 270, 50, 50, 0, 360 * upgradepoints/needed[attributes[4]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 310, 50, 50, 0, 360 * upgradepoints/needed[attributes[5]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 350, 50, 50, 0, 360 * upgradepoints/needed[attributes[6]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    if (attributes[0]>5){
+        ctx.beginPath();
+        ctx.arc(45, 110, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[0]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[1]>5){
+        ctx.beginPath();
+        ctx.arc(85, 150, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[1]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[2]>5){
+        ctx.beginPath();
+        ctx.arc(45, 190, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[2]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[3]>5){
+        ctx.beginPath();
+        ctx.arc(85, 230, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[3]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[4]>5){
+        ctx.beginPath();
+        ctx.arc(45, 270, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[4]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[5]>5){
+        ctx.beginPath();
+        ctx.arc(85, 310, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[5]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+    if (attributes[6]>5){
+        ctx.beginPath();
+        ctx.arc(45, 350, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[6]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
+    }
+
     
     
     
+
+    
+    ctx.font = "10px Comic Sans MS";
+    ctx.fillStyle = "black";
+    ctx.fillText("< MaxHP", 94, 108);
+    ctx.fillText("Regen >", 40, 148);
+    ctx.fillText(" < Bullet", 93, 183);
+    ctx.fillText("   Speed", 93, 195);
+    ctx.fillText("Dmg >", 40, 228);
+    ctx.fillText("< Reload", 94, 268);
+    ctx.fillText("Speed >", 40, 308);
+    ctx.fillText("< Shield", 94, 351);
+    
+    if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
+        text.fillStyle = "lime";
+        ctx.arc(45, 110, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 45, 110);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[0], 45, 110);
+    }
+    
+    if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
+        text.fillStyle = "lime";
+        ctx.arc(85, 150, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 85, 150);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[1], 85, 150);
+    }
+
+    if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
+        text.fillStyle = "lime";
+        ctx.arc(45, 190, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 45, 190);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[2], 45, 190);
+    }
+
+    if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
+        text.fillStyle = "lime";
+        ctx.arc(85, 230, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 85, 230);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[3], 85, 230);
+    }
+    
+    if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
+        text.fillStyle = "lime";
+        ctx.arc(45, 270, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 45, 270);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[4], 45, 270);
+    }
+        
+    if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
+        text.fillStyle = "lime";
+        ctx.arc(85, 310, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 85, 310);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[5], 85, 310);
+    }
+
+    if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
+        text.fillStyle = "lime";
+        ctx.arc(45, 350, 50, 50, 0, 360);
+        ctx.fillStyle = "black";
+        ctx.fillText("BUY", 45, 350);
+    }
+    else{
+        ctx.fillStyle = "black";
+        ctx.fillText("Tier "+attributes[6], 45, 350);
+    }
+      
+        
     
     
     ctx.fillStyle = "black";
