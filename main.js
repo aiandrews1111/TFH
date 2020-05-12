@@ -169,6 +169,19 @@ canvas.addEventListener("click", function(event){
 function update() {
     requestAnimationFrame(update);
     ctx.clearRect(0, 0, 500, 500);
+
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    if (wave%3!=0){
+    ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
+    }
+    else{
+    ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
+    }
+
+    ctx.fillStyle = "black";
+
     for (var i = 0; i < bullets.length; i++) {
          bullets[i].draw();
          if(bullets[i].delete == 1){
@@ -249,7 +262,7 @@ function update() {
         wave++;
         regularEnemySpawnRate += 100;
         if (wave < 30){
-        enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7));
+        enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
         } else if (wave > 30 && wave < 60){
           enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
           enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
@@ -416,19 +429,7 @@ function update() {
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
     }
-    ctx.font = "30px Comic Sans MS";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    if (wave%3!=0){
-    ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
-    }
-    else{
-    ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
-    }
-
-    
-    
-    ctx.fillStyle = "black";
+  
     time++;
 
 }
