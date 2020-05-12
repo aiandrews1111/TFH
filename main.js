@@ -19,7 +19,8 @@ var bulletSpeed = 5,
     chosen = 0;
 
 var hp = 100,
-    maxhp = 100;
+    maxhp = 100,
+    hpregen = 1;
 
 var enemies = [];
 var borderballs = [];
@@ -118,6 +119,13 @@ HomingEnemy.prototype.draw = function(){
          }
     }
     
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+
     ctx.beginPath();
     ctx.fillStyle = "brown";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -235,6 +243,12 @@ Enemy.prototype.draw = function() {
          }
     }
     
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
     ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -345,6 +359,12 @@ function update() {
         y = 8;
     }
     
+    if (hp != maxhp){
+      hp += hpregen/10;
+      if (hp > maxhp){
+        hp = maxhp;
+      }
+    }
     ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(x, y, 8, 0, Math.PI * 2);
@@ -376,6 +396,7 @@ function update() {
         }
         wave++;
         regularEnemySpawnRate += 100;
+        console.log(regularEnemySpawnRate)
         var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
         if (homingspeed>1.5){homingspeed = 1.5;}
         if (wave <= 15){
