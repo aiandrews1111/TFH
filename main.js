@@ -411,23 +411,30 @@ function update() {
         console.log(regularEnemySpawnRate)
         var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
         if (homingspeed>1.5){homingspeed = 1.5;}
+        var multiplier = 0.8;
+        var testwave = wave;
+        while (testwave > 0){
+        testwave -= 30;
+        multiplier *= 1.2;
+        }
+        
         if (wave <= 15){
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         } else if (wave>15 && wave <=30) {
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         } else if (wave > 30 && wave <= 45){
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
         } else if (wave > 45 && wave <= 60){
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         } else if (wave > 60 && wave < 120){
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));    
-        enemies.push(new Enemy(Math.pow(wave*40, 0.5)*1.8 + 25, Math.pow(wave*40, 0.5)*0.2 + 20, Math.pow(wave, 0.5)*0.3));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         }
 
         if (wave == 3){
