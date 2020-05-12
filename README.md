@@ -1,1 +1,1 @@
-# it easy af
+# u do it then, nob complainer
