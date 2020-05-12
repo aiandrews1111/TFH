@@ -501,7 +501,7 @@ function update() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 25, 25, Math.PI * 2);
+    ctx.arc(85, 310, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     
