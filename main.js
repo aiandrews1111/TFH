@@ -18,8 +18,8 @@ var bulletSpeed = 5,
     wave = 1,
     chosen = 0;
 
-var hp = 30,
-    maxhp = 30,
+var hp = 70,
+    maxhp = 70,
     hpregen = 1;
 
 var enemies = [];
