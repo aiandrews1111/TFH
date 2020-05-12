@@ -569,44 +569,127 @@ function update() {
     ctx.fillText("Tokens: "+bosstokens, 60, 75);
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.strokeStyle = "black";
-    ctx.arc(45, 110, 50, 50, 0, 360);
-    ctx.arc(45, 190, 50, 50, 0, 360);
-    ctx.arc(45, 270, 50, 50, 0, 360);
-    ctx.arc(45, 350, 50, 50, 0, 360);
-    ctx.arc(85, 150, 50, 50, 0, 360);
-    ctx.arc(85, 230, 50, 50, 0, 360);
-    ctx.arc(85, 310, 50, 50, 0, 360);
+        
+
+        
+    ctx.beginPath();
+    ctx.arc(45, 110, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 190, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 270, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(45, 350, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 150, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 230, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(85, 310, 50, 50, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.fill();
+        
     ctx.fillRect(15, 25, 100, 355);
     ctx.fillStyle = "rgb(219, 119, 119)";
+    ctx.fill();
+        
+    
     ctx.strokeStyle = "transparent";
+    ctx.beginPath();
     ctx.arc(45, 110, 50, 50, 0, 360 * upgradepoints/needed[attributes[0]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(85, 150, 50, 50, 0, 360 * upgradepoints/needed[attributes[1]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(45, 190, 50, 50, 0, 360 * upgradepoints/needed[attributes[2]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(85, 230, 50, 50, 0, 360 * upgradepoints/needed[attributes[3]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(45, 270, 50, 50, 0, 360 * upgradepoints/needed[attributes[4]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(85, 310, 50, 50, 0, 360 * upgradepoints/needed[attributes[5]]);
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
+    ctx.beginPath();
     ctx.arc(45, 350, 50, 50, 0, 360 * upgradepoints/needed[attributes[6]]);
-    ctx.fillStyle = "rgb(219, 223, 255)";
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fill();
     if (attributes[0]>5){
+        ctx.beginPath();
         ctx.arc(45, 110, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[0]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[1]>5){
+        ctx.beginPath();
         ctx.arc(85, 150, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[1]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[2]>5){
+        ctx.beginPath();
         ctx.arc(45, 190, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[2]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[3]>5){
+        ctx.beginPath();
         ctx.arc(85, 230, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[3]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[4]>5){
+        ctx.beginPath();
         ctx.arc(45, 270, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[4]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[5]>5){
+        ctx.beginPath();
         ctx.arc(85, 310, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[5]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
     if (attributes[6]>5){
+        ctx.beginPath();
         ctx.arc(45, 350, 25, 25, 0, 360 * bosstokens/tokenneeded[attributes[6]]);
+        ctx.fillStyle =  "rgba(219, 223, 255, 1)";
+        ctx.fill();
     }
 
     
