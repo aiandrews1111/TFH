@@ -18,6 +18,8 @@ var bulletSpeed = 5,
     wave = 1,
     chosen = 0;
 
+var upgrades = [0, 0, 0, 0, 0, 0, 0];
+
 var hp = 70,
     maxhp = 70,
     hpregen = 1;
@@ -309,6 +311,12 @@ function update() {
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
     
+    ctx.fillText("Points: "+upgradepoints, 100, 100);
+    
+    
+    
+    
+    
     ctx.fillStyle = "black";
 
     for (var i = 0; i < bullets.length; i++) {
@@ -353,7 +361,15 @@ function update() {
         enemies = [];
         wave++
     }
-
+    if (keys[186]) {
+        upgradepoints++;
+    }
+    if (keys[222]) {
+        bosstokens++;
+    }
+    
+    
+    
     velY *= friction;
     y += velY;
     velX *= friction;
@@ -541,6 +557,8 @@ function update() {
           bosstokens += 2;
         }
     }
+    
+    
     time++;
 
 }
