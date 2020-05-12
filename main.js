@@ -449,37 +449,37 @@ function update() {
 
         
     ctx.beginPath();
-    ctx.arc(45, 110, 50, 50, Math.PI * 2);
+    ctx.arc(45, 110, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 190, 50, 50, Math.PI * 2);
+    ctx.arc(45, 190, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 270, 50, 50, Math.PI * 2);
+    ctx.arc(45, 270, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 350, 50, 50, Math.PI * 2);
+    ctx.arc(45, 350, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 150, 50, 50, Math.PI * 2);
+    ctx.arc(85, 150, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 230, 50, 50, Math.PI * 2);
+    ctx.arc(85, 230, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 50, 50, Math.PI * 2);
+    ctx.arc(85, 310, 25, 25, Math.PI * 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.fill();
@@ -489,7 +489,7 @@ function update() {
     ctx.fill();
         
     
-    ctx.strokeStyle = "transparent";
+    ctx.strokeStyle = "black";
     ctx.beginPath();
     ctx.arc(45, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
     ctx.strokeStyle = "black";
