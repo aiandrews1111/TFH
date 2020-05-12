@@ -586,9 +586,10 @@ function update() {
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
-        ctx.arc(45, 110, 25, 25, Math.PI * 2);
+        ctx.arc(45, 110, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
+        
         ctx.fillStyle = "black";
         ctx.fillText("Click 1", 45, 110);
     }
@@ -599,7 +600,7 @@ function update() {
     
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
         ctx.beginPath();
-        ctx.arc(85, 150, 25, 25, Math.PI * 2);
+        ctx.arc(85, 150, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
@@ -612,7 +613,7 @@ function update() {
 
     if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
         ctx.beginPath();
-        ctx.arc(45, 190, 25, 25, Math.PI * 2);
+        ctx.arc(45, 190, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
@@ -625,7 +626,7 @@ function update() {
 
     if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
         ctx.beginPath();
-        ctx.arc(85, 230, 25, 25, Math.PI * 2);
+        ctx.arc(85, 230, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
@@ -638,7 +639,7 @@ function update() {
     
     if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
         ctx.beginPath();
-        ctx.arc(45, 270, 25, 25, Math.PI * 2);
+        ctx.arc(45, 270, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
@@ -651,9 +652,10 @@ function update() {
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
         ctx.beginPath();
-        ctx.arc(85, 310, 25, 25, Math.PI * 2);
+        ctx.arc(85, 310, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
+        ctx.fillStyle = "black";
         ctx.fillText("Click 6", 85, 310);
     }
     else{
@@ -663,9 +665,10 @@ function update() {
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
         ctx.beginPath();
-        ctx.arc(45, 350, 25, 25, Math.PI * 2);
+        ctx.arc(45, 350, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
+        ctx.fillStyle = "black";
         ctx.fillText("[7]", 45, 350);
     }
     else{
@@ -770,7 +773,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new SniperEnemy(50, 20, 1, 100, 10, 5, 5));
+        //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
@@ -814,8 +817,14 @@ function update() {
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         } else if (wave > 60 && wave < 120){
         enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
-        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 25, 20, 8, 5));
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        } else if (wave > 120){
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 25, 20, 8, 5));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 25, 20, 8, 5));
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         }
 
@@ -914,7 +923,6 @@ function update() {
     }
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
-        upgradepoints++;
     }
     
     
