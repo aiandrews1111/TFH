@@ -769,6 +769,12 @@ function update() {
     if (time >= regularEnemySpawnRate){
         if (wave % 30 == 0){
           regularEnemySpawnRate = 1000;
+          upgradepoints+=15;
+          bosstokens += 2;
+        }
+        upgradepoints++;
+        if (wave % 6 == 0){
+            upgradepoints+=4;
         }
         wave++;
         regularEnemySpawnRate += 50;
@@ -896,14 +902,7 @@ function update() {
     }
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
-        if (wave%6!=0){
-          upgradepoints ++;
-          } else if (wave%6 == 0 && wave%30 != 0){
-          upgradepoints += 5;
-          } else if (wave%30 == 0){
-          upgradepoints +=20;
-          bosstokens += 2;
-        }
+        upgradepoints++;
     }
     
     
