@@ -121,7 +121,7 @@ HomingEnemy.prototype.draw = function(){
     }
     
     ctx.beginPath();
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "red";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     
@@ -132,7 +132,7 @@ HomingEnemy.prototype.draw = function(){
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "red";
     ctx.fill();
     
     
