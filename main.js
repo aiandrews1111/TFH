@@ -18,13 +18,13 @@ var bulletSpeed = 5,
     wave = 1,
     chosen = 0;
 
-var hp = 100,
-    maxhp = 100,
+var hp = 30,
+    maxhp = 30,
     hpregen = 1;
 
 var enemies = [];
 var borderballs = [];
-var regularEnemySpawnRate = 600;
+var regularEnemySpawnRate = 1000;
 
 var time = 0;
 
@@ -404,10 +404,10 @@ function update() {
     
     if (time >= regularEnemySpawnRate){
         if (wave % 30 == 0){
-          regularEnemySpawnRate = 600;
+          regularEnemySpawnRate = 1000;
         }
         wave++;
-        regularEnemySpawnRate += 100;
+        regularEnemySpawnRate += 50;
         console.log(regularEnemySpawnRate)
         var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
         if (homingspeed>1.5){homingspeed = 1.5;}
@@ -424,10 +424,10 @@ function update() {
         enemies.push(new HomingEnemy(Math.pow(time, 0.6)*2.5, Math.pow(time, 0.6)*1/14 + 17, homingspeed, 150));
         enemies.push(new Enemy(Math.pow(time, 0.6)*2.5, Math.pow(time, 0.6)*1/14 + 17, (Math.pow(time, 0.6)*1/14 + 17)/7 - 1));     
         } else if (wave > 60 && wave < 120){
-        enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, homingspeed, 150));
-        enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, homingspeed, 150));
-        enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1));
-        enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1));
+        enemies.push(new HomingEnemy(Math.pow(time, 0.7)*2.5, Math.pow(time, 0.7)*1/14 + 17, homingspeed, 150));
+        enemies.push(new HomingEnemy(Math.pow(time, 0.7)*2.5, Math.pow(time, 0.7)*1/14 + 17, homingspeed, 150));
+        enemies.push(new Enemy(Math.pow(time, 0.7)*2.5, Math.pow(time, 0.7)*1/14 + 17, (Math.pow(time, 0.7)*1/14 + 17)/7 - 1));
+        enemies.push(new Enemy(Math.pow(time, 0.7)*2.5, Math.pow(time, 0.7)*1/14 + 17, (Math.pow(time, 0.7)*1/14 + 17)/7 - 1));
         }
 
         if (wave == 3){
