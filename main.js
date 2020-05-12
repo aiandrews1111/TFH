@@ -379,8 +379,8 @@ function update() {
         enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1));
         enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1));
         } else if (wave > 30 && wave <= 45){
-        enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1. 150));
         enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1, 150));
+        enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1));
         } else if (wave > 45 && wave <= 60){
         enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1, 150));
         enemies.push(new HomingEnemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7 - 1, 150));
