@@ -44,12 +44,11 @@ function SniperBullet(x, y, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
 }
 
 SniperBullet.prototype.draw = function(){
-    
     this.dirX = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.x-x)
     this.dirY = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.y-y)
-    this.x += this.dirX
-    this.y += this.dirY
-    if (Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)) <= this.size-8){
+    this.x -= this.dirX
+    this.y -= this.dirY
+    if (Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)) <= this.size){
         hp -= this.damage;
         this.delete = 1;
     }
@@ -87,7 +86,7 @@ function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletS
 SniperEnemy.prototype.draw = function() {
     
     if (this.timer >= this.reload){
-        Enemies.push(new SniperBullet(this.x, this,y, this.bulletDamage, this.bulletSpeed, this.bulletSize, 0, 0));
+        enemies.push(new SniperBullet(this.x, this.y, this.bulletDamage, this.bulletSpeed, this.bulletSize, 0, 0));
         this.timer = 0;
     } else if (this.timer < this.reload){
         this.timer++
@@ -534,7 +533,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new SniperEnemy(50, 20, 1, 200, 10, 5, 5));
+        enemies.push(new SniperEnemy(50, 20, 1, 100, 10, 5, 5));
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
