@@ -25,6 +25,8 @@ var hp = 70,
 var enemies = [];
 var borderballs = [];
 var regularEnemySpawnRate = 1000;
+var upgradepoints = 0,
+    bosstokens = 0;
 
 var time = 0;
 
@@ -299,16 +301,14 @@ function update() {
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    if (wave%3!=0){
+    if (wave%6!=0){
     ctx.fillText("Wave "+wave, canvas.width/2, canvas.height/2);
-    }
-    else if (wave%30!=0){
+    } else if (wave%6 == 0 && wave%30 != 0){
     ctx.fillText("BOSS Wave "+wave, canvas.width/2, canvas.height/2);
-    }
-    else{
+    } else if (wave%30 == 0){
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
-
+    
     ctx.fillStyle = "black";
 
     for (var i = 0; i < bullets.length; i++) {
@@ -532,8 +532,15 @@ function update() {
     }
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
+        if (wave%6!=0){
+          upgradepoints ++;
+          } else if (wave%6 == 0 && wave%30 != 0){
+          upgradepoints += 5;
+          } else if (wave%30 == 0){
+          upgradepoints +=20;
+          bosstokens += 2;
+        }
     }
-  
     time++;
 
 }
