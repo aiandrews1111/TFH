@@ -505,9 +505,7 @@ function update() {
     ctx.fillStyle = "white";
     ctx.fill();
     
-    ctx.fillRect(15, 25, 100, 355);
-    ctx.fillStyle = "rgb(219, 119, 119)";
-    ctx.fill();
+
         
     
     ctx.strokeStyle = "black";
