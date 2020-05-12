@@ -543,21 +543,7 @@ function update() {
     }
     
     
-    if (time >= regularEnemySpawnRate){
-        if (wave % 30 == 0){
-          regularEnemySpawnRate = 1000;
-        }
-        wave++;
-        regularEnemySpawnRate += 50;
-        console.log(regularEnemySpawnRate)
-        var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
-        if (homingspeed>1.5){homingspeed = 1.5;}
-        var multiplier = 0.8;
-        var testwave = wave;
-        while (testwave > 0){
-        testwave -= 30;
-        multiplier *= 1.2;
-        }
+
         
         
         ctx.font = "18px Comic Sans MS";
@@ -785,7 +771,32 @@ function update() {
         ctx.fillText("Tier "+attributes[6], 45, 350);
     }
       
+    if (time >= regularEnemySpawnRate){
+        if (wave % 30 == 0){
+          regularEnemySpawnRate = 1000;
+        }
+        wave++;
         
+        upgradepoints++;
+        if (wave%6==0){
+            upgradepoints+=4;
+        }
+        if (wave%30==0){
+            upgradepoints+=15;
+        }
+        if (wave%30==0){
+            bosstokens+=2;
+        }
+        regularEnemySpawnRate += 50;
+        console.log(regularEnemySpawnRate)
+        var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
+        if (homingspeed>1.5){homingspeed = 1.5;}
+        var multiplier = 0.8;
+        var testwave = wave;
+        while (testwave > 0){
+        testwave -= 30;
+        multiplier *= 1.2;
+        }
         
         
         if (wave <= 15){
@@ -902,14 +913,6 @@ function update() {
     }
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
-        if (wave%6!=0){
-          upgradepoints ++;
-          } else if (wave%6 == 0 && wave%30 != 0){
-          upgradepoints += 5;
-          } else if (wave%30 == 0){
-          upgradepoints +=20;
-          bosstokens += 2;
-        }
     }
     
     
