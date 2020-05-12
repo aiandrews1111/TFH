@@ -23,9 +23,18 @@ var hp = 100,
 
 var enemies = [];
 var borderballs = [];
+var homingenemies = [];
 var regularEnemySpawnRate = 600;
 
 var time = 0;
+
+function HomingEnemy(x, y, speed, size, range){
+  this.x = x;
+  this.y = y;
+  this.speed = speed;
+  this.size = size;
+  this.range = range;
+}
 
 function Borderball(x, y, speed, size){
   this.x = x;
@@ -43,6 +52,26 @@ function Bullet(x, y) {
   this.DirY = this.y - mouseY;
   this.delete = 0;
     
+}
+
+  HomingEnemy.prototype.draw = function(){
+  this.distance = Math.sqrt(Math.pow(Math.abs(this.x - x), 2) + Math.pow(Math.abs(this.y - y), 2));
+  if (this.distance <= this.range){
+    this.x = this.x - (this.speed/this.distance)*(this.x - x);
+    this.y = this.y - (this.speed/this.distance)*(this.y - y);
+  }
+  if (this.x - this.size < 0){
+    this.x = this.size
+  } else if (this.x + this.size > 500){
+    this.x = 500 - this.size
+  } else if (this.y - this.size < 0){
+    this.y = this.size
+  } else if (this.y + this.size > 500){
+    this.y = 500 - this.size
+  }
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+  ctx.fill();
 }
 
 Borderball.prototype.draw = function() {
@@ -197,6 +226,12 @@ function update() {
              enemies.splice(i, 1);
          }
     }
+    for (var i = 0; i < homingenemies.length; i++) {
+         homingenemies[i].draw();
+         if(homingenemies[i].delete == 1){
+             homingenemies.splice(i, 1);
+         }
+    }
     for (var i = 0; i < borderballs.length; i++) {
          borderballs[i].draw();
      }
@@ -262,6 +297,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
+        homingenemies.push(new HomingEnemy(120, 120, 1, 20, 100));
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
