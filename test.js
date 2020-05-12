@@ -32,6 +32,129 @@ var upgradepoints = 0,
 
 var time = 0;
 
+function SniperBullet(x, y, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
+    this.damage = bulletDamage;
+    this.speed = bulletSpeed;
+    this.dirX = dirX;
+    this.dirY = dirY;
+    this.x = x;
+    this.y = y;
+    this.size = bulletSize
+    this.delete = 0;
+}
+
+SniperBullet.prototype.draw = function(){
+    
+    this.dirX = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.x-x)
+    this.dirY = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.y-y)
+    this.x += this.dirX
+    this.y += this.dirY
+    if (Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)) <= this.size-8){
+        hp -= this.damage;
+        this.delete = 1;
+    }
+    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y < 0){    
+        this.delete = 1;
+    }
+    ctx.beginPath();
+    ctx.fillStyle = "blue";
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize){
+  this.maxhp = hp;
+    this.hp = this.maxhp;
+    this.size = size;
+    this.x = 250 + Math.random()*(125-this.size);
+    this.y = 250 + Math.random()*(125-this.size);
+    this.speedx = Math.random() + 0.5;
+    this.speedy = Math.random() + 0.5;
+    this.speed = speed;
+    this.speedx*=this.speed;
+    this.speedy*=this.speed;
+    this.goingright = Math.round(Math.random());
+    this.goingup = Math.round(Math.random());
+    this.delete = 0;
+    this.reload = reload;
+    this.bulletDamage = bulletDamage;
+    this.bulletSpeed = bulletSpeed;
+    this.timer = 0;
+    this.bulletSize = bulletSize
+    
+}
+
+SniperEnemy.prototype.draw = function() {
+    
+    if (this.timer >= this.reload){
+        Enemies.push(new SniperBullet(this.x, this,y, this.bulletDamage, this.bulletSpeed, this.bulletSize, 0, 0));
+        this.timer = 0;
+    } else if (this.timer < this.reload){
+        this.timer++
+    }
+    if (this.goingright == 1){
+        this.x+=this.speedx;
+    }
+    else{
+        this.x-=this.speedx;
+    }
+    if (this.goingup == 1){
+        this.y-=this.speedy;
+    }
+    else{
+        this.y+=this.speedy;
+    }
+    
+    if (this.x>500-this.size){
+        this.goingright = 0;
+    }
+    if (this.y>500-this.size){
+        this.goingup = 1;
+    }
+    if (this.x<0+this.size){
+        this.goingright = 1;
+    }
+    if (this.y<0+this.size){
+        this.goingup = 0;
+    }
+
+    for (var i = 0; i < bullets.length; i++) {
+         var distx = bullets[i].x - this.x;
+         var disty = bullets[i].y - this.y;
+         var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         if (dist<this.size + 2){
+             this.hp -= bulletDamage;
+             bullets[i].delete = 1;
+         }
+    }
+    
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+    ctx.beginPath();
+    ctx.fillStyle = "blue";
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
+    ctx.fillStyle = "grey";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    
+    
+    if (this.hp <= 0){
+       this.delete = 1;
+    }
+};
+
 function HomingEnemy(hp, size, speed, range){
    this.maxhp = hp;
    this.hp = this.maxhp;
@@ -411,6 +534,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new SniperEnemy(50, 20, 1, 200, 10, 5, 5));
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
