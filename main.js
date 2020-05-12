@@ -119,7 +119,7 @@ HomingEnemy.prototype.draw = function(){
     }
     
     ctx.beginPath();
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "brown";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     
@@ -130,7 +130,7 @@ HomingEnemy.prototype.draw = function(){
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "brown";
     ctx.fill();
     
     
@@ -163,6 +163,7 @@ Borderball.prototype.draw = function() {
   }
 
   ctx.beginPath();
+  ctx.fillStyle = "black";
   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
   ctx.fill();
 };
@@ -358,7 +359,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new HomingEnemy(3, 120, 120, 200));
+        enemies.push(new HomingEnemy(1.5, 50, 25, 200));
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
