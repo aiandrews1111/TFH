@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Test</title>
-  <link type="text/css" rel="stylesheet" href="main.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
   
   <style>
     canvas {border: 5px solid black;}
@@ -12,10 +12,14 @@
 
 <body>
 
-  <canvas width="500" height="500" id="Game"></canvas>
+<canvas id="Game" width="500" height="500" style="z-index: 1;"></canvas>
 
-<script type="text/javascript" src="login.js"></script>
-<script type="text/javascript" src="main.js"></script>
+<div id="Canvas2" style="position: absolute;">
+ <canvas id="Game2" width="800" height="500" 
+   style="absolute: relative; left: 0; top: 0; z-index: 0;"></canvas>
+</div>
+
+<script type="text/javascript" src="script.js"></script>
 
 </body>
 </html>
