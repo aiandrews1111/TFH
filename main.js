@@ -105,9 +105,7 @@ HomingEnemy.prototype.draw = function(){
   } else if (this.y + this.size > 500){
     this.y = 500 - this.size
   }
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-  ctx.fill();
+
       
       for (var i = 0; i < bullets.length; i++) {
          var distx = bullets[i].x - this.x;
@@ -360,7 +358,7 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
-        enemies.push(new HomingEnemy(120, 120, 1, 150));
+        enemies.push(new HomingEnemy(3, 120, 120, 200));
         borderballs.push(new Borderball(20, 20, 1, 20));
         borderballs.push(new Borderball(480, 20, 1, 20));
         borderballs.push(new Borderball(20, 480, 1, 20));
