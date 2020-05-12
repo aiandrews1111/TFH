@@ -669,7 +669,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("[7]", 45, 350);
+        ctx.fillText("Click 7", 45, 350);
     }
     else{
         ctx.fillStyle = "black";
