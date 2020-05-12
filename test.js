@@ -1,7 +1,7 @@
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
 canvas.width = canvas.height = 500;
-
+//im stupid
 var x = 150,
     y = 150,
     velY = 0,
