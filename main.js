@@ -237,6 +237,7 @@ Enemy.prototype.draw = function() {
     }
     
     ctx.beginPath();
+    ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     
