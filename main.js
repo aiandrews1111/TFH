@@ -249,7 +249,7 @@ function update() {
         wave++;
         regularEnemySpawnRate += 100;
         if (wave < 30){
-        enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
+        enemies.push(new Enemy(Math.pow(time, 0.5)*2.5, Math.pow(time, 0.5)*1/14 + 17, (Math.pow(time, 0.5)*1/14 + 17)/7));
         } else if (wave > 30 && wave < 60){
           enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
           enemies.push(new Enemy(time/25, 18+time/900, 1.5 + time/3500));
