@@ -295,12 +295,6 @@ function update() {
              enemies.splice(i, 1);
          }
     }
-    for (var i = 0; i < homingenemies.length; i++) {
-         homingenemies[i].draw();
-         if(homingenemies[i].delete == 1){
-             homingenemies.splice(i, 1);
-         }
-    }
     for (var i = 0; i < borderballs.length; i++) {
          borderballs[i].draw();
      }
