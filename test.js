@@ -586,7 +586,7 @@ function update() {
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.fillStyle = "lime";
-        ctx.arc(45, 110, 50, 50, 0, 360);
+        ctx.arc(45, 110, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 45, 110);
     }
@@ -597,7 +597,7 @@ function update() {
     
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
         ctx.fillStyle = "lime";
-        ctx.arc(85, 150, 50, 50, 0, 360);
+        ctx.arc(85, 150, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 85, 150);
     }
@@ -608,7 +608,7 @@ function update() {
 
     if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
         ctx.fillStyle = "lime";
-        ctx.arc(45, 190, 50, 50, 0, 360);
+        ctx.arc(45, 190, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 45, 190);
     }
@@ -619,7 +619,7 @@ function update() {
 
     if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
         ctx.fillStyle = "lime";
-        ctx.arc(85, 230, 50, 50, 0, 360);
+        ctx.arc(85, 230, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 85, 230);
     }
@@ -630,7 +630,7 @@ function update() {
     
     if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
         ctx.fillStyle = "lime";
-        ctx.arc(45, 270, 50, 50, 0, 360);
+        ctx.arc(45, 270, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 45, 270);
     }
@@ -641,7 +641,7 @@ function update() {
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
         ctx.fillStyle = "lime";
-        ctx.arc(85, 310, 50, 50, 0, 360);
+        ctx.arc(85, 310, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 85, 310);
     }
@@ -652,7 +652,7 @@ function update() {
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
         ctx.fillStyle = "lime";
-        ctx.arc(45, 350, 50, 50, 0, 360);
+        ctx.arc(45, 350, 25, 25, 0, 360);
         ctx.fillStyle = "black";
         ctx.fillText("BUY", 45, 350);
     }
