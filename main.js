@@ -32,20 +32,18 @@ var upgradepoints = 0,
 
 var time = 0;
 
-function SniperBullet(x, y, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
+function SniperBullet(bulletx, bullety, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
     this.damage = bulletDamage;
     this.speed = bulletSpeed;
-    this.dirX = dirX;
-    this.dirY = dirY;
-    this.x = x;
-    this.y = y;
+    this.x = bulletx;
+    this.y = bullety;
     this.size = bulletSize
     this.delete = 0;
+    this.dirX = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.x-x);
+    this.dirY = this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2))*(this.y-y);
 }
 
 SniperBullet.prototype.draw = function(){
-    this.dirX = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.x-x)
-    this.dirY = (this.speed/Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)))*(this.y-y)
     this.x -= this.dirX
     this.y -= this.dirY
     if (Math.sqrt(Math.pow((this.x-x), 2) + Math.pow((this.y-y), 2)) <= this.size){
