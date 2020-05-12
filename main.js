@@ -232,29 +232,29 @@ function update() {
     velX *= friction;
     x += velX;
 
-    if (x >= 488) {
-        x = 488;
-    } else if (x <= 12) {
-        x = 12;
+    if (x >= 492) {
+        x = 492;
+    } else if (x <= 8) {
+        x = 8;
     }
 
-    if (y > 488) {
-        y = 488;
-    } else if (y <= 12) {
-        y = 12;
+    if (y > 492) {
+        y = 492;
+    } else if (y <= 8) {
+        y = 8;
     }
     
     ctx.beginPath();
     ctx.fillStyle = "black";
-    ctx.arc(x, y, 12, 0, Math.PI * 2);
+    ctx.arc(x, y, 8, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
     ctx.fillStyle = "white";
-    ctx.arc(x, y, 10, 0, Math.PI * 2 * hp/maxhp);
+    ctx.arc(x, y, 6, 0, Math.PI * 2 * hp/maxhp);
     ctx.fill();
     ctx.beginPath();
     ctx.fillStyle = "black";
-    ctx.arc(x, y, 8, 0, Math.PI * 2);
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
     ctx.fill();
     
     reloadTimer --;
