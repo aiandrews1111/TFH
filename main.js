@@ -170,6 +170,18 @@ Borderball.prototype.draw = function() {
     this.y = this.y + this.speed
   }
 
+  if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      this.damage = Math.sqrt(this.speed * wave);
+      if (this.damage > 10){
+        this.damage = 10;
+      }
+      hp -= this.damage
+      console.log(hp)
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+
   ctx.beginPath();
   ctx.fillStyle = "black";
   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
