@@ -585,10 +585,12 @@ function update() {
     ctx.fillText("< Shield", 94, 351);
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
+        ctx.beginPath();
+        ctx.arc(45, 110, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 110, 50, 50, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 110);
+        ctx.fillText("Click 1", 45, 110);
     }
     else{
         ctx.fillStyle = "black";
@@ -596,10 +598,12 @@ function update() {
     }
     
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
+        ctx.beginPath();
+        ctx.arc(85, 150, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 150, 50, 50, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 150);
+        ctx.fillText("Click 2", 85, 150);
     }
     else{
         ctx.fillStyle = "black";
@@ -607,10 +611,12 @@ function update() {
     }
 
     if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
+        ctx.beginPath();
+        ctx.arc(45, 190, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 190, 50, 50, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 190);
+        ctx.fillText("Click 3", 45, 190);
     }
     else{
         ctx.fillStyle = "black";
@@ -618,10 +624,12 @@ function update() {
     }
 
     if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
+        ctx.beginPath();
+        ctx.arc(85, 230, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 230, 50, 50, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 230);
+        ctx.fillText("Click 4", 85, 230);
     }
     else{
         ctx.fillStyle = "black";
@@ -629,10 +637,12 @@ function update() {
     }
     
     if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
+        ctx.beginPath();
+        ctx.arc(45, 270, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 270, 50, 50, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 270);
+        ctx.fillText("Click 5", 45, 270);
     }
     else{
         ctx.fillStyle = "black";
@@ -640,10 +650,11 @@ function update() {
     }
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
+        ctx.beginPath();
+        ctx.arc(85, 310, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 310, 50, 50, 0, 360);
-        ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 310);
+        ctx.fill();
+        ctx.fillText("Click 6", 85, 310);
     }
     else{
         ctx.fillStyle = "black";
@@ -651,10 +662,11 @@ function update() {
     }
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
+        ctx.beginPath();
+        ctx.arc(45, 350, 25, 25, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 350, 50, 50, 0, 360);
-        ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 350);
+        ctx.fill();
+        ctx.fillText("[7]", 45, 350);
     }
     else{
         ctx.fillStyle = "black";
