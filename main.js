@@ -57,12 +57,12 @@ SniperBullet.prototype.draw = function(){
         this.delete = 1;
     }
     ctx.beginPath();
-    ctx.fillStyle = "lightskyblue";
-    ctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = "lightskyblue";
+    ctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2);
     ctx.fill();
 }
 
