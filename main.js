@@ -10,6 +10,7 @@ var x = 150,
     velX = 0,
     speed = 2,
     friction = 0.77,
+    slowed = 0,
     keys = [],
     clicknumberkey = false;
 
@@ -70,7 +71,7 @@ SniperBullet.prototype.draw = function(){
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
-    ctx.fillStyle = "lightskyblue";
+    ctx.fillStyle = "lightgreen";
     ctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2);
     ctx.fill();
 }
@@ -148,18 +149,18 @@ SniperEnemy.prototype.draw = function() {
       }
     }
     ctx.beginPath();
-    ctx.fillStyle = "lightskyblue";
+    ctx.fillStyle = "lightgreen";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
-    ctx.fillStyle = "darkblue";
+    ctx.fillStyle = "darkgreen";
     ctx.fill();
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
-    ctx.fillStyle = "lightskyblue";
+    ctx.fillStyle = "lightgreen";
     ctx.fill();
     
     
@@ -412,6 +413,94 @@ Enemy.prototype.draw = function() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
     ctx.fillStyle = "black";
+    ctx.fill();
+    
+    
+    if (this.hp <= 0){
+       this.delete = 1;
+    }
+};
+
+function SlowerEnemy(hp, size, speed, range) {
+    this.maxhp = hp;
+    this.range = range;
+    this.hp = this.maxhp;
+    this.size = size;
+    this.x = 250 + Math.random()*(225-this.size);
+    this.y = 250 + Math.random()*(125-this.size);
+    this.speedx = Math.random() + 0.5;
+    this.speedy = Math.random() + 0.5;
+    this.speed = speed;
+    this.speedx*=this.speed;
+    this.speedy*=this.speed;
+    this.goingright = Math.round(Math.random());
+    this.goingup = Math.round(Math.random());
+    this.delete = 0;
+}
+SlowerEnemy.prototype.draw = function() {
+    if (this.goingright == 1){
+        this.x+=this.speedx;
+    }
+    else{
+        this.x-=this.speedx;
+    }
+    if (this.goingup == 1){
+        this.y-=this.speedy;
+    }
+    else{
+        this.y+=this.speedy;
+    }
+    
+    if (this.x>600-this.size){
+        this.goingright = 0;
+    }
+    if (this.y>500-this.size){
+        this.goingup = 1;
+    }
+    if (this.x<100+this.size){
+        this.goingright = 1;
+    }
+    if (this.y<0+this.size){
+        this.goingup = 0;
+    }
+
+    for (var i = 0; i < bullets.length; i++) {
+         var distx = bullets[i].x - this.x;
+         var disty = bullets[i].y - this.y;
+         var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         if (dist<this.size + 2){
+             this.hp -= bulletDamage;
+             bullets[i].delete = 1;
+         }
+    }
+    
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.range){
+      slowed = 1;
+    }
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(147, 219, 224, 0.3)";
+    ctx.arc(this.x, this.y, this.range, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(147, 219, 224, 1)";
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
+    ctx.fillStyle = "darkblue";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(147, 219, 224, 1)";
     ctx.fill();
     
     
@@ -916,17 +1005,33 @@ function update() {
 
     
     if (keys[38] || keys[87]) {
-        velY = -speed;
+        if (slowed == 0){
+          velY = -speed;
+        } else if (slowed == 1){
+          velY = -speed/2;
+        }
     }
     
     if (keys[40] || keys[83]) {
-        velY = speed;
+        if (slowed == 0){
+          velY = speed;
+        } else if (slowed == 1){
+          velY = speed/2;
+        }
     }
     if (keys[39] || keys[68]) {
-        velX = speed;
+        if (slowed == 0){
+          velX = speed;
+        } else if (slowed == 1){
+          velX = speed/2;
+        }
     }
     if (keys[37] || keys[65]) {
-        velX = -speed;
+        if (slowed == 0){
+          velX = -speed;
+        } else if (slowed == 1){
+          velX = -speed/2;
+        }
     }
     if (keys[69]) {
         enemies = [];
@@ -957,7 +1062,7 @@ function update() {
     } else if (y <= 8) {
         y = 8;
     }
-    
+    slowed = 0;
     if (hp != maxhp){
       hp += hpregen/10;
       if (hp > maxhp){
@@ -983,6 +1088,7 @@ function update() {
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
         //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
+        enemies.push(new SlowerEnemy(50, 10, 1, 200));
         enemies.push(new ShieldEnemy(25, 25, 1, 60, 60));
         borderballs.push(new Borderball(120, 20, 1, 20));
         borderballs.push(new Borderball(580, 20, 1, 20));
@@ -1166,7 +1272,6 @@ function update() {
     
     
     time++;
-
 }
 
 
