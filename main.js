@@ -607,7 +607,11 @@ function update() {
     ctx.fillText("Dmg >", 25, 228);
     ctx.fillText("< Reload", 79, 270);
     ctx.fillText("Speed >", 24, 310);
-    ctx.fillText("< Shield", 77, 353);
+    ctx.fillText("< Nothing", 77, 353);
+    
+
+    
+    
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
@@ -617,6 +621,12 @@ function update() {
         
         ctx.fillStyle = "black";
         ctx.fillText("Click 1", 30, 110);
+        if (keys[49]){
+            points -= needed[attributes[0]];
+            bosstokens -= tokenneeded[attributes[0]];
+            attributes[0] = attributes[0] + 1;
+            maxhp*=1.05;
+        }
     }
     else{
         ctx.font = "10px Comic Sans MS";
@@ -631,6 +641,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 2", 70, 150);
+        if (keys[50]){
+            points -= needed[attributes[1]];
+            bosstokens -= tokenneeded[attributes[1]];
+            attributes[1] = attributes[1] + 1;
+            hpregen *= 1.05;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -644,6 +660,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 3", 30, 190);
+        if (keys[51]){
+            points -= needed[attributes[2]];
+            bosstokens -= tokenneeded[attributes[2]];
+            attributes[2] = attributes[2] + 1;
+            bulletSpeed *= 1.05;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -657,6 +679,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 4", 70, 230);
+        if (keys[52]){
+            points -= needed[attributes[3]];
+            bosstokens -= tokenneeded[attributes[3]];
+            attributes[3] = attributes[3] + 1;
+            bulletDamage *= 1.1;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -670,6 +698,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 5", 30, 270);
+        if (keys[53]){
+            points -= needed[attributes[4]];
+            bosstokens -= tokenneeded[attributes[4]];
+            attributes[4] = attributes[4] + 1;
+            bulletReload *= 0.96;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -683,6 +717,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 6", 70, 310);
+        if (keys[54]){
+            points -= needed[attributes[5]];
+            bosstokens -= tokenneeded[attributes[5]];
+            attributes[5] = attributes[5] + 1;
+            speed *= 1.05;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -696,6 +736,11 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 7", 30, 350);
+        if (keys[55]){
+            points -= needed[attributes[6]];
+            bosstokens -= tokenneeded[attributes[6]];
+            attributes[6] = attributes[6] + 1;
+        }
     }
     else{
         ctx.fillStyle = "black";
@@ -725,25 +770,17 @@ function update() {
 
     
     if (keys[38] || keys[87]) {
-        if (velY > -speed) {
-            velY--;
-        }
+        velY = -speed;
     }
     
     if (keys[40] || keys[83]) {
-        if (velY < speed) {
-            velY++;
-        }
+        velY = speed;
     }
     if (keys[39] || keys[68]) {
-        if (velX < speed) {
-            velX++;
-        }
+        velX = speed;
     }
     if (keys[37] || keys[65]) {
-        if (velX > -speed) {
-            velX--;
-        }
+        velX = -speed;
     }
     if (keys[69]) {
         enemies = [];
