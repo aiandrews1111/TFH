@@ -624,7 +624,8 @@ function update() {
         ctx.fill();
         
         ctx.fillStyle = "black";
-        ctx.fillText("Click 1 \n [Tier "+attributes[0]+"]", 30, 110);
+        ctx.fillText("Click 1", 30, 110);
+        ctx.fillText("[Tier "+attributes[0]+"]", 30, 122);
         if (keys[49] && clicknumberkey === true){
             upgradepoints -= needed[attributes[0]];
             bosstokens -= tokenneeded[attributes[0]];
