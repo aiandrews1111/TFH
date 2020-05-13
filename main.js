@@ -489,9 +489,11 @@ SlowerEnemy.prototype.draw = function() {
     }
 
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 && attributes[6]>0){
+      console.log("Bruh");
       this.speedx = this.basespeedx * this.speed * math.Pow(attributes[6], 0.94);
       this.speedy = this.basespeedy * this.speed * math.Pow(attributes[6], 0.94);
-      
+      console.log(this.speedx);
+      console.log(this.speedy);
     }
     
     
