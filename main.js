@@ -431,6 +431,8 @@ function SlowerEnemy(hp, size, speed, range) {
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
     this.speed = speed;
+    this.basespeedx = this.speedx;
+    this.basespeedy = this.speedy;
     this.speedx*=this.speed;
     this.speedy*=this.speed;
     this.goingright = Math.round(Math.random());
@@ -483,6 +485,14 @@ SlowerEnemy.prototype.draw = function() {
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.range){
       slowed = 1;
     }
+
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * math.Pow(attributes[6], 0.94);
+      this.speedy = this.basespeedy * this.speed * math.Pow(attributes[6], 0.94);
+      
+    }
+    
+    
     ctx.beginPath();
     ctx.fillStyle = "rgba(147, 219, 224, 0.3)";
     ctx.arc(this.x, this.y, this.range, 0, Math.PI * 2);
@@ -507,6 +517,8 @@ SlowerEnemy.prototype.draw = function() {
     if (this.hp <= 0){
        this.delete = 1;
     }
+    this.speedx = this.basespeedx * this.speed;
+    this.speedy = this.basespeedy * this.speed;
 };
 
 function ShieldEnemy(hp, size, speed, shieldTime, noShieldTime) {
@@ -651,7 +663,7 @@ function update() {
         reloadTimer = bulletReload;
         bullets.push(new Bullet(x, y));
     }
-    
+
 
     
         ctx.font = "18px Comic Sans MS";
@@ -1080,6 +1092,11 @@ function update() {
     ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(157, 230, 180, 0.25)";
+    ctx.arc(x, y, 125 + attributes[6]*9, 0, Math.PI * 2);
     ctx.fill();
     
     reloadTimer --;
