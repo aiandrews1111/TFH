@@ -705,8 +705,14 @@ function update() {
     } else if (wave%30 == 0){
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
-
-    
+    ctx.beginPath();
+    ctx.fillRect(98, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillRect(600, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
 
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
@@ -1336,7 +1342,14 @@ function update() {
     ctx.fillRect(600, 0, 2, 600);
     ctx.fillStyle = "black";
     ctx.fill();
-    
+    ctx.beginPath();
+    ctx.fillRect(98, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillRect(600, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
     
     time++;
 }
