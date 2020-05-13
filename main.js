@@ -193,8 +193,8 @@ function Borderball(x, y, speed, size){
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.cilentX - canvas.offsetLeft;
-  var mouseY = event.cilentY - canvas.offsetTop;
+  var mouseX = event.clientX - canvas.offsetLeft;
+  var mouseY = event.clientY - canvas.offsetTop;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
   this.delete = 0;
