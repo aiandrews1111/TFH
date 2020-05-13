@@ -245,7 +245,6 @@ HomingEnemy.prototype.draw = function(){
          var distx = bullets[i].x - this.x;
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
-         console.log(dist);
          if (dist<this.size + 2){
              this.hp -= bulletDamage;
              bullets[i].delete = 1;
@@ -309,7 +308,6 @@ Borderball.prototype.draw = function() {
         this.damage = 10;
       }
       hp -= this.damage
-      console.log(hp)
       if (hp <= 0){
         hp = 0;
       }
@@ -761,7 +759,7 @@ function update() {
     }
       
         
-    
+    console.log(clicknumberkey);
     
     ctx.fillStyle = "black";
 
@@ -869,7 +867,7 @@ function update() {
         }
         wave++;
         regularEnemySpawnRate += 50;
-        console.log(regularEnemySpawnRate)
+
         var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
         if (homingspeed>1.5){homingspeed = 1.5;}
         var multiplier = 0.8;
@@ -879,7 +877,6 @@ function update() {
         multiplier *= 1/((Math.ceil(testwave/30))*4.5 + 1) + 1.007;
         }
         if (multiplier<1){multiplier = 1;}
-        console.log(multiplier);
         
         if (wave <= 15){
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
