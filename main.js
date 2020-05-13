@@ -101,7 +101,10 @@ function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletS
 }
 
 SniperEnemy.prototype.draw = function() {
-    
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+    }
     if (this.timer >= this.reload){
         enemies.push(new SniperBullet(this.x, this.y, this.bulletDamage, this.bulletSpeed, this.bulletSize, 0, 0));
         this.timer = 0;
@@ -151,10 +154,7 @@ SniperEnemy.prototype.draw = function() {
       }
     }
     
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
-    }
+
     
     
     ctx.beginPath();
@@ -218,11 +218,16 @@ function Bullet(x, y) {
 }
 
 HomingEnemy.prototype.draw = function(){
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+    }
   this.distance = Math.sqrt(Math.pow(Math.abs(this.x - x), 2) + Math.pow(Math.abs(this.y - y), 2));
   if (this.distance <= this.range){
-    this.x = this.x - (this.speed/this.distance)*(this.x - x);
-    this.y = this.y - (this.speed/this.distance)*(this.y - y);
+    this.x = this.x - (this.speed/this.distance * Math.pow(attributes[6], 0.93))*(this.x - x);
+    this.y = this.y - (this.speed/this.distance * Math.pow(attributes[6], 0.93))*(this.y - y);
   }
+    
   else{
       if (this.goingright == 1){
         this.x+=this.speedx;
@@ -279,10 +284,7 @@ HomingEnemy.prototype.draw = function(){
       }
     }
     
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
-    }
+
 
     ctx.beginPath();
     ctx.fillStyle = "brown";
@@ -383,6 +385,11 @@ function Enemy(hp, size, speed) {
     this.delete = 0;
 }
 Enemy.prototype.draw = function() {
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+    }
+    
     if (this.goingright == 1){
         this.x+=this.speedx;
     }
@@ -426,11 +433,7 @@ Enemy.prototype.draw = function() {
       }
     }
     
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
-    }
-    
+
     ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -474,6 +477,10 @@ function SlowerEnemy(hp, size, speed, range) {
     this.delete = 0;
 }
 SlowerEnemy.prototype.draw = function() {
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+    }
     if (this.goingright == 1){
         this.x+=this.speedx;
     }
@@ -520,10 +527,7 @@ SlowerEnemy.prototype.draw = function() {
       slowed = 1;
     }
 
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
-    }
+
     
     
     ctx.beginPath();
@@ -591,6 +595,11 @@ ShieldEnemy.prototype.draw = function() {
     }
     this.timer ++; 
     
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+    }
+    
     
     if (this.goingright == 1){
         this.x+=this.speedx;
@@ -637,10 +646,7 @@ ShieldEnemy.prototype.draw = function() {
       }
     }
     
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
-    }
+
 
      if (this.shield == 1){
       ctx.beginPath();
