@@ -1,4 +1,4 @@
-# clik this link -
-# https://bit.ly/3br3fJv
-# plzzzz
-# I cant, its blocked
+# ok i have an idea
+# i hacked the blocking thing
+# this should work
+# https://bit.ly/3a4jIDs
