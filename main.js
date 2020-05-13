@@ -218,7 +218,7 @@ function Bullet(x, y) {
 }
 
 HomingEnemy.prototype.draw = function(){
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 100 + attributes[6]*7 + this.size && attributes[6]>0){
       this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
       this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
@@ -385,7 +385,7 @@ function Enemy(hp, size, speed) {
     this.delete = 0;
 }
 Enemy.prototype.draw = function() {
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 100 + attributes[6]*7 + this.size && attributes[6]>0){
       this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
       this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
@@ -477,7 +477,7 @@ function SlowerEnemy(hp, size, speed, range) {
     this.delete = 0;
 }
 SlowerEnemy.prototype.draw = function() {
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 100 + attributes[6]*7 + this.size && attributes[6]>0){
       this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
       this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
@@ -595,7 +595,7 @@ ShieldEnemy.prototype.draw = function() {
     }
     this.timer ++; 
     
-    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 100 + attributes[6]*7 + this.size && attributes[6]>0){
       this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
       this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
@@ -1151,7 +1151,7 @@ function update() {
     if (attributes[6]>0){
     ctx.beginPath();
     ctx.fillStyle = "rgba(157, 230, 180, 0.25)";
-    ctx.arc(x, y, 125 + attributes[6]*9, 0, Math.PI * 2);
+    ctx.arc(x, y, 100 + attributes[6]*7, 0, Math.PI * 2);
     ctx.fill();
     }
     
