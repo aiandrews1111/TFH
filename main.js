@@ -26,6 +26,9 @@ var bulletSpeed = 5,
 var needed = [1, 2, 3, 5, 8, 13, 21, 34, 0];
 var tokenneeded = [0, 0, 0, 0, 0, 0, 1, 1, 100000000];
 
+var posX = 0;
+var posY = 0;
+
 var attributes = [0, 0, 0, 0, 0, 0, 0];
 
 var hp = 70,
@@ -191,8 +194,8 @@ function Borderball(x, y, speed, size){
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.clientX - canvas.offsetLeft;
-  var mouseY = event.clientY - canvas.offsetTop;
+  var mouseX = posX - canvas.offsetLeft;
+  var mouseY = posY - canvas.offsetTop;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
   this.delete = 0;
@@ -548,6 +551,12 @@ function update() {
     } else if (wave%30 == 0){
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
+
+    
+    var e = window.event;
+
+    posX = e.clientX;
+    posY = e.clientY;
     
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
