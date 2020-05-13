@@ -730,10 +730,7 @@ function update() {
 
     
     if (autofire%2 == 1){
-        if (reloadTimer<0){
-        bullets.push(new Bullet(x, y));
-        reloadTimer = bulletReload;
-        }
+         ctx.fillText("TEST", 300, 300);
     }
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
