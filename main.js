@@ -296,7 +296,7 @@ Borderball.prototype.draw = function() {
     this.x = this.x + this.speed
   } else if (this.x != 100+this.size && this.y == 500-this.size){
     this.x = this.x - this.speed
-  } else if (this.x == 100+this.size && this.y != 100+this.size){
+  } else if (this.x == 100+this.size && this.y != 0+this.size){
     this.y = this.y - this.speed
   } else if (this.x == 600-this.size && this.y != 500-this.size){
     this.y = this.y + this.speed
@@ -954,7 +954,7 @@ function update() {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.fillRect(598, 0, 2, 600);
+    ctx.fillRect(600, 0, 2, 600);
     ctx.fillStyle = "black";
     ctx.fill();
     
