@@ -19,7 +19,6 @@ var bulletSpeed = 5,
     bulletDamage = 10,
     bulletReload = 15,
     bullets = [],
-    autobullets = [],
     wave = 1,
     chosen = 0;
 
@@ -41,6 +40,8 @@ var upgradepoints = 0,
     bosstokens = 0;
 
 var time = 0;
+var mouseX = 0,
+    mouseY = 0;
 
 function SniperBullet(bulletx, bullety, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
     this.damage = bulletDamage;
@@ -193,10 +194,8 @@ function Borderball(x, y, speed, size){
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.clientX - canvas.offsetLeft;
-  var mouseY = event.clientY - canvas.offsetTop;
-  this.DirX = this.x - mouseX;
-  this.DirY = this.y - mouseY;
+  this.dirX = this.x - mouseX;
+  this.dirY = this.y - mouseY;
   this.delete = 0;
     
 }
@@ -325,9 +324,11 @@ Borderball.prototype.draw = function() {
 };
 
 Bullet.prototype.draw = function() {
-    if (this.DirX != 0){
-    this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
-    this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
+    if (this.dirX != 0){
+    this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.dirX, 2) + Math.pow(this.dirY, 2))))*this.dirX;
+    this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.dirX, 2) + Math.pow(this.dirY, 2))))*this.dirY;
+
+    console.log(this.dirX)
     ctx.beginPath();
     ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
     ctx.fill();
@@ -534,7 +535,10 @@ canvas.addEventListener("click", function(event){
     reloadTimer = bulletReload;
     }
 });
-
+canvas.addEventListener("mousemove", function(e){
+  mouseX = e.clientX - canvas.offsetLeft;
+  mouseY = e.clientY - canvas.offsetTop;
+});
 
 function update() {
     requestAnimationFrame(update);
@@ -555,7 +559,7 @@ function update() {
 
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
-        autobullets.push(new Bullet(x, y, 1));
+        bullets.push(new Bullet(x, y));
     }
     
 
@@ -890,8 +894,6 @@ function update() {
         ctx.fillText("Tier "+attributes[6], 30, 350);
     }
       
-        
-    console.log(clicknumberkey);
     
     ctx.fillStyle = "black";
 
@@ -899,12 +901,6 @@ function update() {
          bullets[i].draw();
          if(bullets[i].delete == 1){
              bullets.splice(i, 1);
-         }
-    }
-    for (var i = 0; i < autobullets.length; i++) {
-         autobullets[i].draw();
-         if(autobullets[i].delete == 1){
-             autobullets.splice(i, 1);
          }
     }
     for (var i = 0; i < enemies.length; i++) {
@@ -1017,17 +1013,9 @@ function update() {
         }
         if (multiplier<1){multiplier = 1;}
         
-        if (wave == 1){
-            enemies.push(new Enemy(5, 25, 1));
-        } else if (wave == 2){
-            enemies.push(new Enemy(15, 25, 1.5));
-        } else if (wave == 3){
+        
+        if (wave == 3){
             enemies.push(new Enemy(60, 35, 2));
-        } else if (wave == 4){
-            enemies.push(new Enemy(70, 35, 2));
-        } else if (wave == 5){
-            enemies.push(new Enemy(50, 35, 2));
-            enemies.push(new Enemy(50, 35, 2));
         } else if (wave == 6){
             enemies.push(new Enemy(300, 35, 1));
         } else if (wave == 9){
