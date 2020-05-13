@@ -548,6 +548,11 @@ function update() {
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
     
+    if (autofire%2 == 1 &&reloadTimer < 0){
+        reloadTimer = bulletReload;
+        enemies.push(new Enemy(25, 25, 1);
+    }
+    
 
     
         ctx.font = "18px Comic Sans MS";
@@ -728,10 +733,7 @@ function update() {
     ctx.fillText("< Nothing", 77, 353);
     
 
-    
-    if (autofire%2 == 1){
-         bullets.push(new Bullet(x, y));
-    }
+   
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
