@@ -1,6 +1,7 @@
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
-canvas.width = canvas.height = 500;
+canvas.width = 700;
+canvas.height = 500;
 
 var x = 150,
     y = 150,
@@ -8,7 +9,10 @@ var x = 150,
     velX = 0,
     speed = 2,
     friction = 0.77,
-    keys = [];
+    keys = [],
+    clicknumberkey = false;
+
+var autofire = 0;
 
 var bulletSpeed = 5,
     reloadTimer = 0,
@@ -20,6 +24,8 @@ var bulletSpeed = 5,
 
 var needed = [1, 2, 3, 5, 8, 13, 21, 34, 0];
 var tokenneeded = [0, 0, 0, 0, 0, 0, 1, 1, 100000000];
+
+
 
 var attributes = [0, 0, 0, 0, 0, 0, 0];
 
@@ -34,6 +40,8 @@ var upgradepoints = 0,
     bosstokens = 0;
 
 var time = 0;
+var mouseX = 0,
+    mouseY = 0;
 
 function SniperBullet(bulletx, bullety, bulletDamage, bulletSpeed, bulletSize, dirX, dirY){
     this.damage = bulletDamage;
@@ -53,12 +61,16 @@ SniperBullet.prototype.draw = function(){
         hp -= this.damage;
         this.delete = 1;
     }
-    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y < 0){    
+    if (this.x > 600 || this.x < 100 || this.y > 500 || this.y < 0){    
         this.delete = 1;
     }
     ctx.beginPath();
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = "lightskyblue";
+    ctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2);
     ctx.fill();
 }
 
@@ -66,7 +78,7 @@ function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletS
   this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
-    this.x = 250 + Math.random()*(125-this.size);
+    this.x = 250 + Math.random()*(225-this.size);
     this.y = 250 + Math.random()*(125-this.size);
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
@@ -105,13 +117,13 @@ SniperEnemy.prototype.draw = function() {
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
     if (this.y>500-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
     if (this.y<0+this.size){
@@ -135,18 +147,18 @@ SniperEnemy.prototype.draw = function() {
       }
     }
     ctx.beginPath();
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "lightskyblue";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "darkblue";
     ctx.fill();
     
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "lightskyblue";
     ctx.fill();
     
     
@@ -159,7 +171,7 @@ function HomingEnemy(hp, size, speed, range){
    this.maxhp = hp;
    this.hp = this.maxhp;
    this.size = size;
-   this.x = 250 + Math.random()*(125-this.size);
+   this.x = 250 + Math.random()*(225-this.size);
    this.y = 250 + Math.random()*(125-this.size);
    this.speedx = Math.random() + 0.5;
    this.speedy = Math.random() + 0.5;
@@ -182,10 +194,8 @@ function Borderball(x, y, speed, size){
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = event.clientX - canvas.offsetLeft;
-  var mouseY = event.clientY - canvas.offsetTop;
-  this.DirX = this.x - mouseX;
-  this.DirY = this.y - mouseY;
+  this.dirX = this.x - mouseX;
+  this.dirY = this.y - mouseY;
   this.delete = 0;
     
 }
@@ -210,13 +220,13 @@ HomingEnemy.prototype.draw = function(){
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
     if (this.y>500-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
     if (this.y<0+this.size){
@@ -224,12 +234,12 @@ HomingEnemy.prototype.draw = function(){
     }
 
   }
-  if (this.x - this.size < 0){
-    this.x = this.size
-  } else if (this.x + this.size > 500){
-    this.x = 500 - this.size
+  if (this.x - this.size < 100){
+    this.x = 100+this.size
+  } else if (this.x + this.size > 600){
+    this.x = 600 - this.size
   } else if (this.y - this.size < 0){
-    this.y = this.size
+    this.y = 0+this.size
   } else if (this.y + this.size > 500){
     this.y = 500 - this.size
   }
@@ -239,7 +249,6 @@ HomingEnemy.prototype.draw = function(){
          var distx = bullets[i].x - this.x;
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
-         console.log(dist);
          if (dist<this.size + 2){
              this.hp -= bulletDamage;
              bullets[i].delete = 1;
@@ -275,25 +284,25 @@ HomingEnemy.prototype.draw = function(){
 }
 
 Borderball.prototype.draw = function() {
-  this.speed = -1 * (1/(1/20*(wave + 6))) + 3;
+  this.speed = -1 * (1/(1/18*(wave + 6))) + 3;
   if (this.y - this.size < 0){
-    this.y = this.size
+    this.y = 0 + this.size
   } else if (this.y + this.size > 500){
     this.y = 500 - this.size
   }
-  if (this.x - this.size < 0){
-    this.x = this.size
-  } else if (this.x + this.size > 500){
-    this.x = 500 - this.size
+  if (this.x - this.size < 100){
+    this.x = 100 + this.size
+  } else if (this.x + this.size > 600){
+    this.x = 600 - this.size
   }
   
-  if (this.x != 500-this.size && this.y == this.size){
+  if (this.x != 600-this.size && this.y == 0+this.size){
     this.x = this.x + this.speed
-  } else if (this.x != this.size && this.y == 500-this.size){
+  } else if (this.x != 100+this.size && this.y == 500-this.size){
     this.x = this.x - this.speed
-  } else if (this.x == this.size && this.y != this.size){
+  } else if (this.x == 100+this.size && this.y != 0+this.size){
     this.y = this.y - this.speed
-  } else if (this.x == 500-this.size && this.y != 500-this.size){
+  } else if (this.x == 600-this.size && this.y != 500-this.size){
     this.y = this.y + this.speed
   }
 
@@ -303,7 +312,6 @@ Borderball.prototype.draw = function() {
         this.damage = 10;
       }
       hp -= this.damage
-      console.log(hp)
       if (hp <= 0){
         hp = 0;
       }
@@ -316,14 +324,16 @@ Borderball.prototype.draw = function() {
 };
 
 Bullet.prototype.draw = function() {
-    if (this.DirX != 0){
-    this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirX;
-    this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.DirX, 2) + Math.pow(this.DirY, 2))))*this.DirY;
+    if (this.dirX != 0){
+    this.x += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.dirX, 2) + Math.pow(this.dirY, 2))))*this.dirX;
+    this.y += -1*(bulletSpeed/Math.sqrt(Math.abs(Math.pow(this.dirX, 2) + Math.pow(this.dirY, 2))))*this.dirY;
+
+    console.log(this.dirX)
     ctx.beginPath();
     ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
     ctx.fill();
     }
-    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
+    if (this.x > 600 || this.x < 100 || this.y > 500 || this.y < 0){
        this.delete = 1;
     }
     
@@ -334,7 +344,7 @@ function Enemy(hp, size, speed) {
     this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
-    this.x = 250 + Math.random()*(125-this.size);
+    this.x = 250 + Math.random()*(225-this.size);
     this.y = 250 + Math.random()*(125-this.size);
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
@@ -359,13 +369,13 @@ Enemy.prototype.draw = function() {
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
     if (this.y>500-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
     if (this.y<0+this.size){
@@ -409,19 +419,130 @@ Enemy.prototype.draw = function() {
     }
 };
 
+function ShieldEnemy(hp, size, speed, shieldTime, noShieldTime) {
+    this.maxhp = hp;
+    this.hp = this.maxhp;
+    this.size = size;
+    this.x = 250 + Math.random()*(225-this.size);
+    this.y = 250 + Math.random()*(125-this.size);
+    this.speedx = Math.random() + 0.5;
+    this.speedy = Math.random() + 0.5;
+    this.speed = speed;
+    this.speedx*=this.speed;
+    this.speedy*=this.speed;
+    this.goingright = Math.round(Math.random());
+    this.goingup = Math.round(Math.random());
+    this.timer = 0;
+    this.shieldTime = shieldTime;
+    this.noShieldTime = noShieldTime;
+    this.shield = 0;
+    this.delete = 0;
+}
+ShieldEnemy.prototype.draw = function() {
 
+    if (this.shield == 0){
+      if (this.timer >= this.noShieldTime){
+        this.shield = 1;
+        this.timer = 0;
+      } 
+    } 
+    if (this.shield == 1){
+      if (this.timer >= this.shieldTime){
+        this.shield = 0;
+        this.timer = 0;
+      } 
+    }
+    this.timer ++; 
+    
+    
+    if (this.goingright == 1){
+        this.x+=this.speedx;
+    }
+    else{
+        this.x-=this.speedx;
+    }
+    if (this.goingup == 1){
+        this.y-=this.speedy;
+    }
+    else{
+        this.y+=this.speedy;
+    }
+    
+    if (this.x>600-this.size){
+        this.goingright = 0;
+    }
+    if (this.y>500-this.size){
+        this.goingup = 1;
+    }
+    if (this.x<100+this.size){
+        this.goingright = 1;
+    }
+    if (this.y<0+this.size){
+        this.goingup = 0;
+    }
+
+    for (var i = 0; i < bullets.length; i++) {
+         var distx = bullets[i].x - this.x;
+         var disty = bullets[i].y - this.y;
+         var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         if (dist<this.size + 2){
+            if (this.shield == 0){
+              this.hp -= bulletDamage;
+            }
+             bullets[i].delete = 1;
+         }
+    }
+    
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+
+     if (this.shield == 1){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size*10/9, 0, Math.PI * 2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.fillStyle = "silver";
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
+    ctx.fillStyle = "silver";
+    ctx.fill();
+    
+    
+    
+    if (this.hp <= 0){
+       this.delete = 1;
+    }
+};
 
 canvas.addEventListener("click", function(event){
-    if (reloadTimer<0){
+    if (reloadTimer<0 && autofire%2 != 1){
     bullets.push(new Bullet(x, y));
     reloadTimer = bulletReload;
     }
 });
-
+canvas.addEventListener("mousemove", function(e){
+  var mouseX = e.clientX - canvas.offsetLeft;
+  var mouseY = e.clientY - canvas.offsetTop;
+});
 
 function update() {
     requestAnimationFrame(update);
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(0, 0, 700, 500);
 
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "white";
@@ -433,137 +554,172 @@ function update() {
     } else if (wave%30 == 0){
     ctx.fillText("MEGA BOSS Wave "+wave, canvas.width/2, canvas.height/2);
     }
+
+    
+
+    if (autofire%2 == 1 &&reloadTimer < 0){
+        reloadTimer = bulletReload;
+        bullets.push(new Bullet(x, y));
+    }
     
 
     
         ctx.font = "18px Comic Sans MS";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText("Attributes", 65, 40);
+    ctx.fillText("Attributes", 50, 40);
     ctx.font = "12px Comic Sans MS";
-    ctx.fillText("Points: "+upgradepoints, 61, 60);
-    ctx.fillText("Tokens: "+bosstokens, 60, 75);
+    ctx.fillText("Points: "+upgradepoints, 46, 60);
+    ctx.fillText("Tokens: "+bosstokens, 45, 75);
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.strokeStyle = "black";
         
-
-        
     ctx.beginPath();
-    ctx.arc(45, 110, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(30, 110, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 190, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(30, 190, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 270, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(30, 270, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 350, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(30, 350, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 150, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(70, 150, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 230, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(70, 230, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 50, 50, Math.PI * 2);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+    ctx.arc(70, 310, 27, 27, 0, Math.PI * 2);
+    ctx.fillStyle = "black";
     ctx.fill();
         
-    ctx.fillRect(15, 25, 100, 355);
-    ctx.fillStyle = "rgb(219, 119, 119)";
-    ctx.fill();
         
+    ctx.beginPath();
+    ctx.arc(30, 110, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(30, 190, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(30, 270, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(30, 350, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(70, 150, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(70, 230, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(70, 310, 25, 25, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
     
-    ctx.strokeStyle = "transparent";
-    ctx.beginPath();
-    ctx.arc(45, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(85, 150, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(45, 190, 25, 25, 0,2 * Math.PI * upgradepoints/needed[attributes[2]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(85, 230, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(45, 270, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(85, 310, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(45, 350, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
-    ctx.fill();
+    if (keys[81] && clicknumberkey === true){
+        autofire ++;
+        clicknumberkey = 0;
+    }
+
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 110, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 150, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 190, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[2]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 230, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 270, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 310, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 350, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+
     if (attributes[0]>5){
         ctx.beginPath();
-        ctx.arc(45, 110, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[0]]);
+        ctx.arc(30, 110, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[0]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[1]>5){
         ctx.beginPath();
-        ctx.arc(85, 150, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[1]]);
+        ctx.arc(70, 150, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[1]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[2]>5){
         ctx.beginPath();
-        ctx.arc(45, 190, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[2]]);
+        ctx.arc(30, 190, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[2]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[3]>5){
         ctx.beginPath();
-        ctx.arc(85, 230, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[3]]);
+        ctx.arc(70, 230, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[3]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[4]>5){
         ctx.beginPath();
-        ctx.arc(45, 270, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[4]]);
+        ctx.arc(30, 270, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[4]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[5]>5){
         ctx.beginPath();
-        ctx.arc(85, 310, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[5]]);
+        ctx.arc(70, 310, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[5]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[6]>5){
         ctx.beginPath();
-        ctx.arc(45, 350, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[6]]);
+        ctx.arc(30, 350, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[6]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
@@ -573,96 +729,171 @@ function update() {
     
 
     
-    ctx.font = "10px Comic Sans MS";
+    ctx.font = "9px Comic Sans MS";
     ctx.fillStyle = "black";
-    ctx.fillText("< MaxHP", 94, 108);
-    ctx.fillText("Regen >", 40, 148);
-    ctx.fillText(" < Bullet", 93, 183);
-    ctx.fillText("   Speed", 93, 195);
-    ctx.fillText("Dmg >", 40, 228);
-    ctx.fillText("< Reload", 94, 268);
-    ctx.fillText("Speed >", 40, 308);
-    ctx.fillText("< Shield", 94, 351);
+    ctx.fillText("< MaxHP", 79, 108);
+    ctx.fillText("Regen >", 25, 149);
+    ctx.fillText("<", 63, 192);
+    ctx.fillText("   Bullet", 77, 186);
+    ctx.fillText("   Speed", 77, 198);
+    ctx.fillText("Dmg >", 25, 228);
+    ctx.fillText("< Reload", 79, 270);
+    ctx.fillText("Speed >", 24, 310);
+    ctx.fillText("< Nothing", 77, 353);
+    
+
+   
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
+        ctx.beginPath();
+        ctx.arc(30, 110, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 110, 25, 25, 0, 360);
+        ctx.fill();
+        
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 110);
+        ctx.fillText("Click 1", 30, 110);
+        ctx.fillText("[Tier "+attributes[0]+"]", 30, 122);
+        if (keys[49] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[0]];
+            bosstokens -= tokenneeded[attributes[0]];
+            attributes[0] = attributes[0] + 1;
+            maxhp*=1.05;
+            clicknumberkey = 0;
+        }
     }
     else{
+        ctx.font = "10px Comic Sans MS";
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[0], 45, 110);
+        ctx.fillText("Tier "+attributes[0], 30, 110);
     }
     
+    
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
+        ctx.beginPath();
+        ctx.arc(70, 150, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 150, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 150);
+        ctx.fillText("Click 2", 70, 150);
+        ctx.fillText("[Tier "+attributes[1]+"]", 70, 162);
+        if (keys[50] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[1]];
+            bosstokens -= tokenneeded[attributes[1]];
+            attributes[1] = attributes[1] + 1;
+            hpregen *= 1.05;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[1], 85, 150);
+        ctx.fillText("Tier "+attributes[1], 70, 150);
     }
 
     if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
+        ctx.beginPath();
+        ctx.arc(30, 190, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 190, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 190);
+        ctx.fillText("Click 3", 30, 190);
+        ctx.fillText("[Tier "+attributes[2]+"]", 30, 202);
+        if (keys[51] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[2]];
+            bosstokens -= tokenneeded[attributes[2]];
+            attributes[2] = attributes[2] + 1;
+            bulletSpeed *= 1.05;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[2], 45, 190);
+        ctx.fillText("Tier "+attributes[2], 30, 190);
     }
 
     if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
+        ctx.beginPath();
+        ctx.arc(70, 230, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 230, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 230);
+        ctx.fillText("Click 4", 70, 230);
+        ctx.fillText("[Tier "+attributes[3]+"]", 70, 242);
+        if (keys[52] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[3]];
+            bosstokens -= tokenneeded[attributes[3]];
+            attributes[3] = attributes[3] + 1;
+            bulletDamage *= 1.1;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[3], 85, 230);
+        ctx.fillText("Tier "+attributes[3], 70, 230);
     }
     
     if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
+        ctx.beginPath();
+        ctx.arc(30, 270, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 270, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 270);
+        ctx.fillText("Click 5", 30, 270);
+        ctx.fillText("[Tier "+attributes[4]+"]", 30, 282);
+        if (keys[53] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[4]];
+            bosstokens -= tokenneeded[attributes[4]];
+            attributes[4] = attributes[4] + 1;
+            bulletReload *= 0.96;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[4], 45, 270);
+        ctx.fillText("Tier "+attributes[4], 30, 270);
     }
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
+        ctx.beginPath();
+        ctx.arc(70, 310, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(85, 310, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 85, 310);
+        ctx.fillText("Click 6", 70, 310);
+        ctx.fillText("[Tier "+attributes[5]+"]", 70, 322);
+        if (keys[54] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[5]];
+            bosstokens -= tokenneeded[attributes[5]];
+            attributes[5] = attributes[5] + 1;
+            speed *= 1.05;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[5], 85, 310);
+        ctx.fillText("Tier "+attributes[5], 70, 310);
     }
+    
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
+        ctx.beginPath();
+        ctx.arc(30, 350, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
-        ctx.arc(45, 350, 25, 25, 0, 360);
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("BUY", 45, 350);
+        ctx.fillText("Click 7", 30, 350);
+        ctx.fillText("[Tier "+attributes[6]+"]", 30, 362);
+        if (keys[55] && clicknumberkey === true){
+            upgradepoints -= needed[attributes[6]];
+            bosstokens -= tokenneeded[attributes[6]];
+            attributes[6] = attributes[6] + 1;
+            clicknumberkey = 0;
+        }
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[6], 45, 350);
+        ctx.fillText("Tier "+attributes[6], 30, 350);
     }
       
-        
-    
     
     ctx.fillStyle = "black";
 
@@ -684,25 +915,17 @@ function update() {
 
     
     if (keys[38] || keys[87]) {
-        if (velY > -speed) {
-            velY--;
-        }
+        velY = -speed;
     }
     
     if (keys[40] || keys[83]) {
-        if (velY < speed) {
-            velY++;
-        }
+        velY = speed;
     }
     if (keys[39] || keys[68]) {
-        if (velX < speed) {
-            velX++;
-        }
+        velX = speed;
     }
     if (keys[37] || keys[65]) {
-        if (velX > -speed) {
-            velX--;
-        }
+        velX = -speed;
     }
     if (keys[69]) {
         enemies = [];
@@ -722,10 +945,10 @@ function update() {
     velX *= friction;
     x += velX;
 
-    if (x >= 492) {
-        x = 492;
-    } else if (x <= 8) {
-        x = 8;
+    if (x >= 592) {
+        x = 592;
+    } else if (x <= 108) {
+        x = 108;
     }
 
     if (y > 492) {
@@ -758,10 +981,12 @@ function update() {
 
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
-        borderballs.push(new Borderball(20, 20, 1, 20));
-        borderballs.push(new Borderball(480, 20, 1, 20));
-        borderballs.push(new Borderball(20, 480, 1, 20));
-        borderballs.push(new Borderball(480, 480, 1, 20));
+        //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
+        enemies.push(new ShieldEnemy(25, 25, 1, 60, 60));
+        borderballs.push(new Borderball(120, 20, 1, 20));
+        borderballs.push(new Borderball(580, 20, 1, 20));
+        borderballs.push(new Borderball(120, 480, 1, 20));
+        borderballs.push(new Borderball(580, 480, 1, 20));
     }
     
     
@@ -777,59 +1002,69 @@ function update() {
         }
         wave++;
         regularEnemySpawnRate += 50;
-        if (wave == 2){
-            enemies.push(new SniperEnemy(50, 20, 1, 100, 10, 5, 5));
-        } else if (wave == 3){
-            enemies.push(new Enemy(120, 35, 2));
+
+        var homingspeed = (Math.pow(time, 0.5)*1/14 + 17)/7 - 1;
+        if (homingspeed>1.5){homingspeed = 1.5;}
+        var multiplier = 0.8;
+        var testwave = wave;
+        while (testwave > 0){
+        testwave -= 30;
+        multiplier *= 1/((Math.ceil(testwave/30))*4.5 + 1) + 1.007;
+        }
+        if (multiplier<1){multiplier = 1;}
+        
+        
+        if (wave == 3){
+            enemies.push(new Enemy(60, 35, 2));
         } else if (wave == 6){
-            enemies.push(new Enemy(240, 35, 1));
+            enemies.push(new Enemy(300, 35, 1));
         } else if (wave == 9){
-            enemies.push(new Enemy(500, 35, 2));
+            enemies.push(new Enemy(100, 35, 2));
         } else if (wave == 12){
             enemies.push(new Enemy(600, 35, 0.5));
         } else if (wave == 15){
-            enemies.push(new Enemy(400, 35, 2));
-            enemies.push(new Enemy(400, 35, 2));
+            enemies.push(new Enemy(150, 35, 2));
+            enemies.push(new Enemy(150, 35, 2));
         } else if (wave == 18){
-            enemies.push(new Enemy(1000, 50, 0.3));
+            enemies.push(new Enemy(1200, 50, 0.3));
         } else if (wave == 21){
-            enemies.push(new Enemy(150, 35, 3));
-            enemies.push(new Enemy(150, 35, 3));
-            enemies.push(new Enemy(150, 45, 3));
-            enemies.push(new Enemy(150, 45, 3));
+            enemies.push(new Enemy(80, 45, 1.5));
+            enemies.push(new Enemy(80, 40, 2));
+            enemies.push(new Enemy(80, 35, 2.5));
+            enemies.push(new Enemy(80, 30, 3));
             
         } else if (wave == 24){
-            enemies.push(new Enemy(200, 45, 3.5));
-            enemies.push(new Enemy(200, 45, 3.5));
-            enemies.push(new Enemy(200, 45, 3.5));
-            enemies.push(new Enemy(200, 45, 3.5));
+            enemies.push(new Enemy(160, 30, 4));
+            enemies.push(new Enemy(190, 35, 3.5));
+            enemies.push(new Enemy(220, 40, 3));
+            enemies.push(new Enemy(250, 45, 2.5));
             
         } else if (wave == 27){
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
-            enemies.push(new Enemy(30, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
+            enemies.push(new Enemy(10, 15, 0.5));
             
             
         }  else if (wave == 30){
@@ -864,18 +1099,69 @@ function update() {
             enemies.push(new Enemy(20, 15, 2.5));
             enemies.push(new Enemy(20, 15, 2.5));
         }  else if (wave == 33){
-        enemies.push(new HomingEnemy(150, 25, 1.5, 150));
-        enemies.push(new HomingEnemy(150, 25, 1.5, 150));
+        enemies.push(new HomingEnemy(80, 25, 1.5, 150));
+        enemies.push(new HomingEnemy(80, 25, 1.5, 150));
         } else if (wave == 36){
-        enemies.push(new HomingEnemy(350, 35, 1.5, 150));
-        enemies.push(new HomingEnemy(350, 35, 1.5, 150));
+        enemies.push(new HomingEnemy(300, 35, 1.5, 150));
+        enemies.push(new HomingEnemy(300, 35, 1.5, 150));
+        }
+        else{
+            
+        //If we didn't define any waves, then it goes back to automatic spawning.
+            
+        if (wave <= 15){
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        } else if (wave>15 && wave <=30) {
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        } else if (wave > 30 && wave <= 45){
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        } else if (wave > 45 && wave <= 60){
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        } else if (wave > 60 && wave < 120){
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 70, 25, 6, 5));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        } else if (wave > 120){
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 70, 25, 6, 5));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 70, 25, 6, 5));
+        enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
+        }
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         }
         time = 0;
     }
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
-        upgradepoints++;
     }
+    
+    ctx.beginPath();
+    ctx.fillRect(98, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillRect(600, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
     
     
     time++;
@@ -887,7 +1173,11 @@ update();
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
+    if (clicknumberkey === false){
+    clicknumberkey = true;
+    }
 });
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
+    clicknumberkey = false;
 });
