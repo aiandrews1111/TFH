@@ -26,8 +26,7 @@ var bulletSpeed = 5,
 var needed = [1, 2, 3, 5, 8, 13, 21, 34, 0];
 var tokenneeded = [0, 0, 0, 0, 0, 0, 1, 1, 100000000];
 
-var posX = 0;
-var posY = 0;
+
 
 var attributes = [0, 0, 0, 0, 0, 0, 0];
 
@@ -194,8 +193,8 @@ function Borderball(x, y, speed, size){
 function Bullet(x, y) {
   this.x = x;
   this.y = y;
-  var mouseX = posX - canvas.offsetLeft;
-  var mouseY = posY - canvas.offsetTop;
+  var mouseX = event.cilentX - canvas.offsetLeft;
+  var mouseY = event.cilentY - canvas.offsetTop;
   this.DirX = this.x - mouseX;
   this.DirY = this.y - mouseY;
   this.delete = 0;
@@ -553,11 +552,7 @@ function update() {
     }
 
     
-    var e = window.event;
 
-    posX = e.clientX;
-    posY = e.clientY;
-    
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
         autobullets.push(new Bullet(x, y, 1));
