@@ -597,16 +597,17 @@ function update() {
     
 
     
-    ctx.font = "10px Comic Sans MS";
+    ctx.font = "9px Comic Sans MS";
     ctx.fillStyle = "black";
     ctx.fillText("< MaxHP", 79, 108);
-    ctx.fillText("Regen >", 25, 148);
-    ctx.fillText(" < Bullet", 78, 186);
-    ctx.fillText("   Speed", 78, 198);
+    ctx.fillText("Regen >", 25, 149);
+    ctx.fillText("<", 63, 192);
+    ctx.fillText("   Bullet", 77, 186);
+    ctx.fillText("   Speed", 77, 198);
     ctx.fillText("Dmg >", 25, 228);
     ctx.fillText("< Reload", 79, 270);
-    ctx.fillText("Speed >", 25, 309);
-    ctx.fillText("< Shield", 79, 351);
+    ctx.fillText("Speed >", 24, 310);
+    ctx.fillText("< Shield", 77, 353);
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
@@ -618,6 +619,7 @@ function update() {
         ctx.fillText("Click 1", 30, 110);
     }
     else{
+        ctx.font = "10px Comic Sans MS";
         ctx.fillStyle = "black";
         ctx.fillText("Tier "+attributes[0], 30, 110);
     }
@@ -824,9 +826,8 @@ function update() {
         var testwave = wave;
         while (testwave > 0){
         testwave -= 30;
-        multiplier *= 1/(Math.ceil(testwave/30) + 1) + 1.01;
+        multiplier *= 1.2;
         }
-        if (multiplier<1){multiplier = 1;}
         
         if (wave <= 15){
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
