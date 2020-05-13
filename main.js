@@ -12,6 +12,8 @@ var x = 150,
     keys = [],
     clicknumberkey = false;
 
+var autofire = 0;
+
 var bulletSpeed = 5,
     reloadTimer = 0,
     bulletDamage = 10,
@@ -617,6 +619,10 @@ function update() {
     ctx.fillStyle = "white";
     ctx.fill();
     
+    if (keys[81] && clicknumberkey === true){
+        autofire ++;
+        clicknumberkey = 0;
+    }
 
     for (var i = 50; i--;){
         ctx.beginPath();
@@ -723,7 +729,12 @@ function update() {
     
 
     
-    
+    if (autofire%2 == 1){
+        if (reloadTimer<0){
+        bullets.push(new Bullet(x, y));
+        reloadTimer = bulletReload;
+        }
+    }
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
@@ -747,6 +758,7 @@ function update() {
         ctx.fillStyle = "black";
         ctx.fillText("Tier "+attributes[0], 30, 110);
     }
+    
     
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
         ctx.beginPath();
@@ -852,6 +864,7 @@ function update() {
         ctx.fillStyle = "black";
         ctx.fillText("Tier "+attributes[5], 70, 310);
     }
+    
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
         ctx.beginPath();
