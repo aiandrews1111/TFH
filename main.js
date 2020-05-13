@@ -511,35 +511,49 @@ function update() {
     ctx.fill();
     
 
-        
-    ctx.beginPath();
-    ctx.arc(30, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(70, 150, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(30, 190, 25, 25, 0,2 * Math.PI * upgradepoints/needed[attributes[2]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(70, 230, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(30, 270, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(70, 310, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(30, 350, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
-    ctx.fillStyle = "red";
-    ctx.fill();
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 110, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 150, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 190, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[2]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 230, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 270, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(70, 310, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+    for (var i = 50; i--;){
+        ctx.beginPath();
+        ctx.arc(30, 350, 25 - i/2, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+    }
+
     if (attributes[0]>5){
         ctx.beginPath();
         ctx.arc(30, 110, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[0]]);
