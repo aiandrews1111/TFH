@@ -280,14 +280,14 @@ HomingEnemy.prototype.draw = function(){
 }
 
 Borderball.prototype.draw = function() {
-  this.speed = -1 * (1/(1/20*(wave + 6))) + 3;
+  this.speed = -1 * (1/(1/18*(wave + 6))) + 3;
   if (this.y - this.size < 100){
-    this.y = this.size
+    this.y = 100 + this.size
   } else if (this.y + this.size > 600){
     this.y = 600 - this.size
   }
   if (this.x - this.size < 100){
-    this.x = this.size
+    this.x = 100 + this.size
   } else if (this.x + this.size > 600){
     this.x = 600 - this.size
   }
@@ -364,16 +364,16 @@ Enemy.prototype.draw = function() {
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
-    if (this.y>500-this.size){
+    if (this.y>600-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
-    if (this.y<0+this.size){
+    if (this.y<100+this.size){
         this.goingup = 0;
     }
 
@@ -948,6 +948,15 @@ function update() {
     if (enemies.length == 0){
         time = regularEnemySpawnRate;
     }
+    
+    ctx.beginPath();
+    ctx.fillRect(98, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillRect(598, 0, 2, 600);
+    ctx.fillStyle = "black";
+    ctx.fill();
     
     
     time++;
