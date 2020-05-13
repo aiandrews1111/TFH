@@ -5,8 +5,8 @@ canvas.height = 500;
 
 var x = 150,
     y = 150,
-    velY = 100,
-    velX = 100,
+    velY = 0,
+    velX = 0,
     speed = 2,
     friction = 0.77,
     keys = [],
@@ -72,7 +72,7 @@ function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletS
   this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
-    this.x = 250 + Math.random()*(125-this.size);
+    this.x = 250 + Math.random()*(225-this.size);
     this.y = 250 + Math.random()*(125-this.size);
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
@@ -165,7 +165,7 @@ function HomingEnemy(hp, size, speed, range){
    this.maxhp = hp;
    this.hp = this.maxhp;
    this.size = size;
-   this.x = 250 + Math.random()*(125-this.size);
+   this.x = 250 + Math.random()*(225-this.size);
    this.y = 250 + Math.random()*(125-this.size);
    this.speedx = Math.random() + 0.5;
    this.speedy = Math.random() + 0.5;
@@ -338,7 +338,7 @@ function Enemy(hp, size, speed) {
     this.maxhp = hp;
     this.hp = this.maxhp;
     this.size = size;
-    this.x = 250 + Math.random()*(125-this.size);
+    this.x = 250 + Math.random()*(225-this.size);
     this.y = 250 + Math.random()*(125-this.size);
     this.speedx = Math.random() + 0.5;
     this.speedy = Math.random() + 0.5;
@@ -413,7 +413,116 @@ Enemy.prototype.draw = function() {
     }
 };
 
+function ShieldEnemy(hp, size, speed, shieldTime, noShieldTime) {
+    this.maxhp = hp;
+    this.hp = this.maxhp;
+    this.size = size;
+    this.x = 250 + Math.random()*(225-this.size);
+    this.y = 250 + Math.random()*(125-this.size);
+    this.speedx = Math.random() + 0.5;
+    this.speedy = Math.random() + 0.5;
+    this.speed = speed;
+    this.speedx*=this.speed;
+    this.speedy*=this.speed;
+    this.goingright = Math.round(Math.random());
+    this.goingup = Math.round(Math.random());
+    this.timer = 0;
+    this.shieldTime = shieldTime;
+    this.noShieldTime = noShieldTime;
+    this.shield = 0;
+    this.delete = 0;
+}
+ShieldEnemy.prototype.draw = function() {
 
+    if (this.shield = 0){
+      if (this.timer >= this.noShieldTime){
+        this.shield = 1;
+        this.timer = 0;
+      } else if (this.timer < this.noShieldTime){
+        this.timer++;
+      }
+    } 
+    if (this.shield = 1){
+      if (this.timer >= this.shieldTime){
+        this.shield = 0;
+        this.timer = 0;
+      } else if (this.timer < this.shieldTime){
+        this.timer++;
+      }
+    }
+    if (this.goingright == 1){
+        this.x+=this.speedx;
+    }
+    else{
+        this.x-=this.speedx;
+    }
+    if (this.goingup == 1){
+        this.y-=this.speedy;
+    }
+    else{
+        this.y+=this.speedy;
+    }
+    
+    if (this.x>600-this.size){
+        this.goingright = 0;
+    }
+    if (this.y>500-this.size){
+        this.goingup = 1;
+    }
+    if (this.x<100+this.size){
+        this.goingright = 1;
+    }
+    if (this.y<0+this.size){
+        this.goingup = 0;
+    }
+
+    for (var i = 0; i < bullets.length; i++) {
+         var distx = bullets[i].x - this.x;
+         var disty = bullets[i].y - this.y;
+         var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
+         if (dist<this.size + 2){
+            if (this.shield = 0){
+              this.hp -= bulletDamage;
+            }
+             bullets[i].delete = 1;
+         }
+    }
+    
+    if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= this.size){
+      hp -= this.speed;
+      if (hp <= 0){
+        hp = 0;
+      }
+    }
+
+     if (this.shield == 1){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size*10/9, 0, Math.PI * 2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.fillStyle = "silver";
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*8/9, 0, Math.PI * 2 * this.hp/this.maxhp);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*7/9, 0, Math.PI * 2);
+    ctx.fillStyle = "silver";
+    ctx.fill();
+    
+    
+    
+    if (this.hp <= 0){
+       this.delete = 1;
+    }
+};
 
 canvas.addEventListener("click", function(event){
     if (reloadTimer<0){
@@ -855,6 +964,7 @@ function update() {
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
         //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
+        enemies.push(new ShieldEnemy(25, 25, 1, 200, 200));
         borderballs.push(new Borderball(120, 20, 1, 20));
         borderballs.push(new Borderball(580, 20, 1, 20));
         borderballs.push(new Borderball(120, 480, 1, 20));
