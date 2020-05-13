@@ -798,10 +798,10 @@ function update() {
     if (time==0){
         enemies.push(new Enemy(25, 25, 1));
         //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
-        borderballs.push(new Borderball(20, 20, 1, 20));
-        borderballs.push(new Borderball(480, 20, 1, 20));
-        borderballs.push(new Borderball(20, 480, 1, 20));
-        borderballs.push(new Borderball(480, 480, 1, 20));
+        borderballs.push(new Borderball(120, 20, 1, 20));
+        borderballs.push(new Borderball(580, 20, 1, 20));
+        borderballs.push(new Borderball(120, 480, 1, 20));
+        borderballs.push(new Borderball(580, 480, 1, 20));
     }
     
     
