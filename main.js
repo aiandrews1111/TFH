@@ -826,8 +826,10 @@ function update() {
         var testwave = wave;
         while (testwave > 0){
         testwave -= 30;
-        multiplier *= 1.2;
+        multiplier *= 1/(Math.ceil(testwave/30)*3 + 1) + 1.007;
         }
+        if (multiplier<1){multiplier = 1;}
+        
         
         if (wave <= 15){
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
