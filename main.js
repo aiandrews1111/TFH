@@ -550,7 +550,7 @@ function update() {
     
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
-        enemies.push(new Enemy(25, 25, 1);
+        enemies.push(new Enemy(25, 25, 1));
     }
     
 
