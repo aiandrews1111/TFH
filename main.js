@@ -438,18 +438,17 @@ ShieldEnemy.prototype.draw = function() {
       if (this.timer >= this.noShieldTime){
         this.shield = 1;
         this.timer = 0;
-      } else if (this.timer < this.noShieldTime){
-        this.timer++;
-      }
+      } 
     } 
     if (this.shield == 1){
       if (this.timer >= this.shieldTime){
         this.shield = 0;
         this.timer = 0;
-      } else if (this.timer < this.shieldTime){
-        this.timer++;
-      }
+      } 
     }
+    this.timer ++; 
+    
+    
     if (this.goingright == 1){
         this.x+=this.speedx;
     }
