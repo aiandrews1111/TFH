@@ -826,7 +826,7 @@ function update() {
         var testwave = wave;
         while (testwave > 0){
         testwave -= 30;
-        multiplier *= 1/((Math.ceil(testwave/30))*3.5 + 1) + 1.007;
+        multiplier *= 1/((Math.ceil(testwave/30))*4.5 + 1) + 1.007;
         }
         if (multiplier<1){multiplier = 1;}
         console.log(multiplier);
