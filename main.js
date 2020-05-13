@@ -601,11 +601,11 @@ function update() {
     ctx.fillStyle = "black";
     ctx.fillText("< MaxHP", 79, 108);
     ctx.fillText("Regen >", 25, 148);
-    ctx.fillText(" < Bullet", 78, 183);
-    ctx.fillText("   Speed", 78, 195);
+    ctx.fillText(" < Bullet", 78, 186);
+    ctx.fillText("   Speed", 78, 198);
     ctx.fillText("Dmg >", 25, 228);
-    ctx.fillText("< Reload", 79, 268);
-    ctx.fillText("Speed >", 25, 308);
+    ctx.fillText("< Reload", 79, 270);
+    ctx.fillText("Speed >", 25, 309);
     ctx.fillText("< Shield", 79, 351);
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
