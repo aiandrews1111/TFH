@@ -434,7 +434,7 @@ function ShieldEnemy(hp, size, speed, shieldTime, noShieldTime) {
 }
 ShieldEnemy.prototype.draw = function() {
 
-    if (this.shield = 0){
+    if (this.shield == 0){
       if (this.timer >= this.noShieldTime){
         this.shield = 1;
         this.timer = 0;
@@ -442,7 +442,7 @@ ShieldEnemy.prototype.draw = function() {
         this.timer++;
       }
     } 
-    if (this.shield = 1){
+    if (this.shield == 1){
       if (this.timer >= this.shieldTime){
         this.shield = 0;
         this.timer = 0;
@@ -481,7 +481,7 @@ ShieldEnemy.prototype.draw = function() {
          var disty = bullets[i].y - this.y;
          var dist = Math.pow(Math.pow(distx, 2) + Math.pow(disty, 2), 0.5);
          if (dist<this.size + 2){
-            if (this.shield = 0){
+            if (this.shield == 0){
               this.hp -= bulletDamage;
             }
              bullets[i].delete = 1;
