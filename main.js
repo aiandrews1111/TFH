@@ -102,8 +102,8 @@ function SniperEnemy(hp, size, speed, reload, bulletDamage, bulletSpeed, bulletS
 
 SniperEnemy.prototype.draw = function() {
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
+      this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
     if (this.timer >= this.reload){
         enemies.push(new SniperBullet(this.x, this.y, this.bulletDamage, this.bulletSpeed, this.bulletSize, 0, 0));
@@ -224,8 +224,8 @@ HomingEnemy.prototype.draw = function(){
     }
   this.distance = Math.sqrt(Math.pow(Math.abs(this.x - x), 2) + Math.pow(Math.abs(this.y - y), 2));
   if (this.distance <= this.range){
-    this.x = this.x - (this.speed/this.distance * Math.pow(attributes[6], 0.93))*(this.x - x);
-    this.y = this.y - (this.speed/this.distance * Math.pow(attributes[6], 0.93))*(this.y - y);
+    this.x = this.x - (this.speed/this.distance * Math.pow(0.93, attributes[6]))*(this.x - x);
+    this.y = this.y - (this.speed/this.distance * Math.pow(0.93, attributes[6]))*(this.y - y);
   }
     
   else{
