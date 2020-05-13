@@ -54,7 +54,7 @@ SniperBullet.prototype.draw = function(){
         hp -= this.damage;
         this.delete = 1;
     }
-    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y < 0){    
+    if (this.x > 600 || this.x < 100 || this.y > 600 || this.y < 100){    
         this.delete = 1;
     }
     ctx.beginPath();
@@ -110,16 +110,16 @@ SniperEnemy.prototype.draw = function() {
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
-    if (this.y>500-this.size){
+    if (this.y>600-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
-    if (this.y<0+this.size){
+    if (this.y<100+this.size){
         this.goingup = 0;
     }
 
@@ -215,28 +215,28 @@ HomingEnemy.prototype.draw = function(){
         this.y+=this.speedy;
     }
     
-    if (this.x>500-this.size){
+    if (this.x>600-this.size){
         this.goingright = 0;
     }
-    if (this.y>500-this.size){
+    if (this.y>600-this.size){
         this.goingup = 1;
     }
-    if (this.x<0+this.size){
+    if (this.x<100+this.size){
         this.goingright = 1;
     }
-    if (this.y<0+this.size){
+    if (this.y<100+this.size){
         this.goingup = 0;
     }
 
   }
-  if (this.x - this.size < 0){
-    this.x = this.size
-  } else if (this.x + this.size > 500){
-    this.x = 500 - this.size
-  } else if (this.y - this.size < 0){
-    this.y = this.size
-  } else if (this.y + this.size > 500){
-    this.y = 500 - this.size
+  if (this.x - this.size < 100){
+    this.x = 100+this.size
+  } else if (this.x + this.size > 600){
+    this.x = 600 - this.size
+  } else if (this.y - this.size < 100){
+    this.y = 100+this.size
+  } else if (this.y + this.size > 600){
+    this.y = 600 - this.size
   }
 
       
@@ -281,24 +281,24 @@ HomingEnemy.prototype.draw = function(){
 
 Borderball.prototype.draw = function() {
   this.speed = -1 * (1/(1/20*(wave + 6))) + 3;
-  if (this.y - this.size < 0){
+  if (this.y - this.size < 100){
     this.y = this.size
-  } else if (this.y + this.size > 500){
-    this.y = 500 - this.size
+  } else if (this.y + this.size > 600){
+    this.y = 600 - this.size
   }
-  if (this.x - this.size < 0){
+  if (this.x - this.size < 100){
     this.x = this.size
-  } else if (this.x + this.size > 500){
-    this.x = 500 - this.size
+  } else if (this.x + this.size > 600){
+    this.x = 600 - this.size
   }
   
-  if (this.x != 500-this.size && this.y == this.size){
+  if (this.x != 600-this.size && this.y == 100+this.size){
     this.x = this.x + this.speed
-  } else if (this.x != this.size && this.y == 500-this.size){
+  } else if (this.x != 100+this.size && this.y == 600-this.size){
     this.x = this.x - this.speed
-  } else if (this.x == this.size && this.y != this.size){
+  } else if (this.x == 100+this.size && this.y != 100+this.size){
     this.y = this.y - this.speed
-  } else if (this.x == 500-this.size && this.y != 500-this.size){
+  } else if (this.x == 600-this.size && this.y != 600-this.size){
     this.y = this.y + this.speed
   }
 
@@ -328,7 +328,7 @@ Bullet.prototype.draw = function() {
     ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
     ctx.fill();
     }
-    if (this.x > 500 || this.x < 0 || this.y > 500 || this.y <0){
+    if (this.x > 600 || this.x < 100 || this.y > 600 || this.y < 100){
        this.delete = 1;
     }
     
@@ -761,16 +761,16 @@ function update() {
     velX *= friction;
     x += velX;
 
-    if (x >= 492) {
-        x = 492;
-    } else if (x <= 8) {
-        x = 8;
+    if (x >= 592) {
+        x = 592;
+    } else if (x <= 108) {
+        x = 108;
     }
 
-    if (y > 492) {
-        y = 492;
-    } else if (y <= 8) {
-        y = 8;
+    if (y > 592) {
+        y = 592;
+    } else if (y <= 108) {
+        y = 108;
     }
     
     if (hp != maxhp){
