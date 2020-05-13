@@ -1,6 +1,7 @@
 var canvas = document.getElementById('Game');
 var ctx = canvas.getContext('2d');
-canvas.width = canvas.height = 500;
+canvas.width = 700;
+canvas.height = 500;
 
 var x = 150,
     y = 150,
