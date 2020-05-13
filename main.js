@@ -58,6 +58,10 @@ SniperBullet.prototype.draw = function(){
     }
     ctx.beginPath();
     ctx.fillStyle = "lightskyblue";
+    ctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = "black";
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
 }
@@ -843,7 +847,7 @@ function update() {
         enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 70, 25, 6, 5));
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         enemies.push(new HomingEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, homingspeed, 150));
-        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 25, 8, 4, 3));
+        enemies.push(new SniperEnemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier, 70, 25, 6, 5));
         enemies.push(new Enemy(Math.pow((wave%30)*40, 0.5)*1.8*multiplier + 25, Math.pow((wave%30)*40, 0.5)*0.2*multiplier + 20, Math.pow((wave%30), 0.5)*0.3*multiplier));
         }
 
