@@ -896,7 +896,10 @@ function update() {
     ctx.fillText("Dmg >", 25, 228);
     ctx.fillText("< Reload", 79, 270);
     ctx.fillText("Speed >", 24, 310);
-    ctx.fillText("< Decay", 77, 353);
+    ctx.fillText("<", 63, 354);
+    ctx.fillText("   Slow", 75, 348);
+    ctx.fillText("   Aura", 75, 360);
+
     
 
    
