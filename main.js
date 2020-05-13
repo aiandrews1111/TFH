@@ -19,6 +19,7 @@ var bulletSpeed = 5,
     bulletDamage = 10,
     bulletReload = 15,
     bullets = [],
+    autobullets = [],
     wave = 1,
     chosen = 0;
 
@@ -550,7 +551,7 @@ function update() {
     
     if (autofire%2 == 1 &&reloadTimer < 0){
         reloadTimer = bulletReload;
-        enemies.push(new Enemy(25, 25, 1));
+        autobullets.push(new Bullet(x, y, 1));
     }
     
 
@@ -894,6 +895,12 @@ function update() {
          bullets[i].draw();
          if(bullets[i].delete == 1){
              bullets.splice(i, 1);
+         }
+    }
+    for (var i = 0; i < autobullets.length; i++) {
+         autobullets[i].draw();
+         if(autobullets[i].delete == 1){
+             autobullets.splice(i, 1);
          }
     }
     for (var i = 0; i < enemies.length; i++) {
