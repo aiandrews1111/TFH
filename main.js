@@ -5,8 +5,8 @@ canvas.height = 500;
 
 var x = 150,
     y = 150,
-    velY = 0,
-    velX = 0,
+    velY = 10,
+    velX = 10,
     speed = 2,
     friction = 0.77,
     keys = [],
