@@ -9,7 +9,8 @@ var x = 150,
     velX = 0,
     speed = 2,
     friction = 0.77,
-    keys = [];
+    keys = [],
+    clicknumberkey = false;
 
 var bulletSpeed = 5,
     reloadTimer = 0,
@@ -626,11 +627,12 @@ function update() {
         
         ctx.fillStyle = "black";
         ctx.fillText("Click 1", 30, 110);
-        if (keys[49]){
+        if (keys[49] && clicknumberkey === true){
             upgradepoints -= needed[attributes[0]];
             bosstokens -= tokenneeded[attributes[0]];
             attributes[0] = attributes[0] + 1;
             maxhp*=1.05;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -646,11 +648,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 2", 70, 150);
-        if (keys[50]){
+        if (keys[50] && clicknumberkey === true){
             upgradepoints -= needed[attributes[1]];
             bosstokens -= tokenneeded[attributes[1]];
             attributes[1] = attributes[1] + 1;
             hpregen *= 1.05;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -665,11 +668,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 3", 30, 190);
-        if (keys[51]){
+        if (keys[51] && clicknumberkey === true){
             upgradepoints -= needed[attributes[2]];
             bosstokens -= tokenneeded[attributes[2]];
             attributes[2] = attributes[2] + 1;
             bulletSpeed *= 1.05;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -684,11 +688,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 4", 70, 230);
-        if (keys[52]){
+        if (keys[52] && clicknumberkey === true){
             upgradepoints -= needed[attributes[3]];
             bosstokens -= tokenneeded[attributes[3]];
             attributes[3] = attributes[3] + 1;
             bulletDamage *= 1.1;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -703,11 +708,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 5", 30, 270);
-        if (keys[53]){
+        if (keys[53] && clicknumberkey === true){
             upgradepoints -= needed[attributes[4]];
             bosstokens -= tokenneeded[attributes[4]];
             attributes[4] = attributes[4] + 1;
             bulletReload *= 0.96;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -722,11 +728,12 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 6", 70, 310);
-        if (keys[54]){
+        if (keys[54] && clicknumberkey === true){
             upgradepoints -= needed[attributes[5]];
             bosstokens -= tokenneeded[attributes[5]];
             attributes[5] = attributes[5] + 1;
             speed *= 1.05;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -741,10 +748,11 @@ function update() {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.fillText("Click 7", 30, 350);
-        if (keys[55]){
+        if (keys[55] && clicknumberkey === true){
             upgradepoints -= needed[attributes[6]];
             bosstokens -= tokenneeded[attributes[6]];
             attributes[6] = attributes[6] + 1;
+            clicknumberkey = 0;
         }
     }
     else{
@@ -1014,7 +1022,11 @@ update();
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
+    if (clicknumberkey === false){
+    clicknumberkey = true;
+    }
 });
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
+    clicknumberkey = false;
 });
