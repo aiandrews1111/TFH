@@ -426,7 +426,7 @@ canvas.addEventListener("click", function(event){
 
 function update() {
     requestAnimationFrame(update);
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(0, 0, 700, 500);
 
     ctx.font = "30px Comic Sans MS";
     ctx.fillStyle = "white";
