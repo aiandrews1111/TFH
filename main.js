@@ -624,7 +624,7 @@ function update() {
         ctx.fill();
         
         ctx.fillStyle = "black";
-        ctx.fillText("Click 1", 30, 110);
+        ctx.fillText("Click 1\n[Tier "+attributes[0]+"]", 30, 270);
         if (keys[49] && clicknumberkey === true){
             upgradepoints -= needed[attributes[0]];
             bosstokens -= tokenneeded[attributes[0]];
@@ -645,7 +645,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 2", 70, 150);
+        ctx.fillText("Click 2\n[Tier "+attributes[1]+"]", 30, 270);
         if (keys[50] && clicknumberkey === true){
             upgradepoints -= needed[attributes[1]];
             bosstokens -= tokenneeded[attributes[1]];
@@ -665,7 +665,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 3", 30, 190);
+        ctx.fillText("Click 3\n[Tier "+attributes[2]+"]", 30, 270);
         if (keys[51] && clicknumberkey === true){
             upgradepoints -= needed[attributes[2]];
             bosstokens -= tokenneeded[attributes[2]];
@@ -685,7 +685,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 4", 70, 230);
+        ctx.fillText("Click 4\n[Tier "+attributes[3]+"]", 30, 270);
         if (keys[52] && clicknumberkey === true){
             upgradepoints -= needed[attributes[3]];
             bosstokens -= tokenneeded[attributes[3]];
@@ -705,7 +705,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 5", 30, 270);
+        ctx.fillText("Click 5\n[Tier "+attributes[4]+"]", 30, 270);
         if (keys[53] && clicknumberkey === true){
             upgradepoints -= needed[attributes[4]];
             bosstokens -= tokenneeded[attributes[4]];
@@ -725,7 +725,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 6", 70, 310);
+        ctx.fillText("Click 6\n[Tier "+attributes[5]+"]", 30, 270);
         if (keys[54] && clicknumberkey === true){
             upgradepoints -= needed[attributes[5]];
             bosstokens -= tokenneeded[attributes[5]];
@@ -745,7 +745,7 @@ function update() {
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 7", 30, 350);
+        ctx.fillText("Click 7\n[Tier "+attributes[6]+"]", 30, 270);
         if (keys[55] && clicknumberkey === true){
             upgradepoints -= needed[attributes[6]];
             bosstokens -= tokenneeded[attributes[6]];
