@@ -512,42 +512,33 @@ function update() {
     
 
         
-    
-    ctx.strokeStyle = "black";
     ctx.beginPath();
     ctx.arc(30, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(70, 150, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(30, 190, 25, 25, 0,2 * Math.PI * upgradepoints/needed[attributes[2]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(70, 230, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(30, 270, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(70, 310, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.beginPath();
     ctx.arc(30, 350, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "rgba(219, 119, 119, 1)";
+    ctx.fillStyle = "red";
     ctx.fill();
     if (attributes[0]>5){
         ctx.beginPath();
@@ -680,7 +671,7 @@ function update() {
         ctx.fillStyle = "black";
         ctx.fillText("Click 4", 70, 230);
         if (keys[52]){
-            upgradespoints -= needed[attributes[3]];
+            upgradepoints -= needed[attributes[3]];
             bosstokens -= tokenneeded[attributes[3]];
             attributes[3] = attributes[3] + 1;
             bulletDamage *= 1.1;
