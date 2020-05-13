@@ -526,7 +526,7 @@ ShieldEnemy.prototype.draw = function() {
 };
 
 canvas.addEventListener("click", function(event){
-    if (reloadTimer<0){
+    if (reloadTimer<0 && autofire%2 != 1){
     bullets.push(new Bullet(x, y));
     reloadTimer = bulletReload;
     }
