@@ -444,10 +444,10 @@ function update() {
         ctx.font = "18px Comic Sans MS";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText("Attributes", 40, 40);
+    ctx.fillText("Attributes", 50, 40);
     ctx.font = "12px Comic Sans MS";
-    ctx.fillText("Points: "+upgradepoints, 36, 60);
-    ctx.fillText("Tokens: "+bosstokens, 35, 75);
+    ctx.fillText("Points: "+upgradepoints, 46, 60);
+    ctx.fillText("Tokens: "+bosstokens, 45, 75);
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.strokeStyle = "black";
         
