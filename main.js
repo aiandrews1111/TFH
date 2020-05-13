@@ -1162,10 +1162,10 @@ function update() {
     
 
     if (time==0){
-        enemies.push(new Enemy(25, 25, 1));
+        enemies.push(new Enemy(5, 25, 1));
         //hp, size, speed, reload, bulletDamage, bulletSpeed, bulletSize
-        enemies.push(new SlowerEnemy(50, 10, 1, 200));
-        enemies.push(new ShieldEnemy(25, 25, 1, 60, 60));
+        // enemies.push(new SlowerEnemy(50, 10, 1, 200));
+        // enemies.push(new ShieldEnemy(25, 25, 1, 60, 60));
         borderballs.push(new Borderball(120, 20, 1, 20));
         borderballs.push(new Borderball(580, 20, 1, 20));
         borderballs.push(new Borderball(120, 480, 1, 20));
@@ -1196,13 +1196,33 @@ function update() {
         }
         if (multiplier<1){multiplier = 1;}
         
-        
-        if (wave == 3){
-            enemies.push(new Enemy(60, 35, 2));
+        if (wave == 2){
+            enemies.push(new Enemy(30, 25, 1));
+        } else if (wave == 3){
+            enemies.push(new Enemy(50, 25, 1));
+        } else if (wave == 4){
+            enemies.push(new SlowerEnemy(50, 25, 1, 200));
+        } else if (wave == 5){
+            enemies.push(new Enemy(50, 25, 1));
+            enemies.push(new SlowerEnemy(50, 25, 1, 200));
         } else if (wave == 6){
-            enemies.push(new Enemy(300, 35, 1));
+            enemies.push(new Enemy(150, 35, 1));
+            enemies.push(new SlowerEnemy(150, 35, 1, 200));
+        } else if (wave == 7){
+            enemies.push(new Enemy(29, 25, 2));
+            enemies.push(new SlowerEnemy(29, 25, 2, 200));
+        } else if (wave == 8){
+            enemies.push(new Enemy(35, 25, 2));
+            enemies.push(new SlowerEnemy(15, 25, 0.5, 200));
+            enemies.push(new SlowerEnemy(15, 25, 0.5, 200));
+            enemies.push(new SlowerEnemy(15, 25, 0.5, 200));
         } else if (wave == 9){
-            enemies.push(new Enemy(100, 35, 2));
+            enemies.push(new Enemy(35, 25, 2));
+            enemies.push(new Enemy(40, 30, 1.5));
+            enemies.push(new Enemy(45, 35, 1));
+            enemies.push(new SlowerEnemy(15, 30, 0.5, 200));
+            enemies.push(new SlowerEnemy(20, 35, 0.5, 200));
+            enemies.push(new SlowerEnemy(10, 25, 3, 200));
         } else if (wave == 12){
             enemies.push(new Enemy(600, 35, 0.5));
         } else if (wave == 15){
