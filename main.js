@@ -1017,9 +1017,17 @@ function update() {
         }
         if (multiplier<1){multiplier = 1;}
         
-        
-        if (wave == 3){
+        if (wave == 1){
+            enemies.push(new Enemy(5, 25, 1));
+        } else if (wave == 2){
+            enemies.push(new Enemy(15, 25, 1.5));
+        } else if (wave == 3){
             enemies.push(new Enemy(60, 35, 2));
+        } else if (wave == 4){
+            enemies.push(new Enemy(70, 35, 2));
+        } else if (wave == 5){
+            enemies.push(new Enemy(50, 35, 2));
+            enemies.push(new Enemy(50, 35, 2));
         } else if (wave == 6){
             enemies.push(new Enemy(300, 35, 1));
         } else if (wave == 9){
