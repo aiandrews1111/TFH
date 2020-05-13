@@ -444,69 +444,69 @@ function update() {
         ctx.font = "18px Comic Sans MS";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText("Attributes", 65, 40);
+    ctx.fillText("Attributes", 40, 40);
     ctx.font = "12px Comic Sans MS";
-    ctx.fillText("Points: "+upgradepoints, 61, 60);
-    ctx.fillText("Tokens: "+bosstokens, 60, 75);
+    ctx.fillText("Points: "+upgradepoints, 36, 60);
+    ctx.fillText("Tokens: "+bosstokens, 35, 75);
     ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
     ctx.strokeStyle = "black";
         
     ctx.beginPath();
-    ctx.arc(45, 110, 27, 27, 0, Math.PI * 2);
+    ctx.arc(20, 110, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 190, 27, 27, 0, Math.PI * 2);
+    ctx.arc(20, 190, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 270, 27, 27, 0, Math.PI * 2);
+    ctx.arc(20, 270, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 350, 27, 27, 0, Math.PI * 2);
+    ctx.arc(20, 350, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 150, 27, 27, 0, Math.PI * 2);
+    ctx.arc(60, 150, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 230, 27, 27, 0, Math.PI * 2);
+    ctx.arc(60, 230, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 27, 27, 0, Math.PI * 2);
+    ctx.arc(60, 310, 27, 27, 0, Math.PI * 2);
     ctx.fillStyle = "black";
     ctx.fill();
         
         
     ctx.beginPath();
-    ctx.arc(45, 110, 25, 25, 0, Math.PI * 2);
+    ctx.arc(20, 110, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 190, 25, 25, 0, Math.PI * 2);
+    ctx.arc(20, 190, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 270, 25, 25, 0, Math.PI * 2);
+    ctx.arc(20, 270, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 350, 25, 25, 0, Math.PI * 2);
+    ctx.arc(20, 350, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 150, 25, 25, 0, Math.PI * 2);
+    ctx.arc(60, 150, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 230, 25, 25, 0, Math.PI * 2);
+    ctx.arc(60, 230, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 25, 25, 0, Math.PI * 2);
+    ctx.arc(60, 310, 25, 25, 0, Math.PI * 2);
     ctx.fillStyle = "white";
     ctx.fill();
     
@@ -515,79 +515,79 @@ function update() {
     
     ctx.strokeStyle = "black";
     ctx.beginPath();
-    ctx.arc(45, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
+    ctx.arc(20, 110, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[0]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 150, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
+    ctx.arc(60, 150, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[1]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 190, 25, 25, 0,2 * Math.PI * upgradepoints/needed[attributes[2]]);
+    ctx.arc(20, 190, 25, 25, 0,2 * Math.PI * upgradepoints/needed[attributes[2]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 230, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
+    ctx.arc(60, 230, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[3]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 270, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
+    ctx.arc(20, 270, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[4]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(85, 310, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
+    ctx.arc(60, 310, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[5]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(45, 350, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
+    ctx.arc(20, 350, 25, 25, 0, 2 * Math.PI * upgradepoints/needed[attributes[6]]);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "rgba(219, 119, 119, 1)";
     ctx.fill();
     if (attributes[0]>5){
         ctx.beginPath();
-        ctx.arc(45, 110, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[0]]);
+        ctx.arc(20, 110, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[0]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[1]>5){
         ctx.beginPath();
-        ctx.arc(85, 150, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[1]]);
+        ctx.arc(60, 150, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[1]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[2]>5){
         ctx.beginPath();
-        ctx.arc(45, 190, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[2]]);
+        ctx.arc(20, 190, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[2]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[3]>5){
         ctx.beginPath();
-        ctx.arc(85, 230, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[3]]);
+        ctx.arc(60, 230, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[3]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[4]>5){
         ctx.beginPath();
-        ctx.arc(45, 270, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[4]]);
+        ctx.arc(20, 270, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[4]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[5]>5){
         ctx.beginPath();
-        ctx.arc(85, 310, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[5]]);
+        ctx.arc(60, 310, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[5]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
     if (attributes[6]>5){
         ctx.beginPath();
-        ctx.arc(45, 350, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[6]]);
+        ctx.arc(20, 350, 12.5, 12.5, 0, 2 * Math.PI * bosstokens/tokenneeded[attributes[6]]);
         ctx.fillStyle =  "rgba(219, 223, 255, 1)";
         ctx.fill();
     }
@@ -599,105 +599,105 @@ function update() {
     
     ctx.font = "10px Comic Sans MS";
     ctx.fillStyle = "black";
-    ctx.fillText("< MaxHP", 94, 108);
-    ctx.fillText("Regen >", 40, 148);
-    ctx.fillText(" < Bullet", 93, 183);
-    ctx.fillText("   Speed", 93, 195);
-    ctx.fillText("Dmg >", 40, 228);
-    ctx.fillText("< Reload", 94, 268);
-    ctx.fillText("Speed >", 40, 308);
-    ctx.fillText("< Shield", 94, 351);
+    ctx.fillText("< MaxHP", 69, 108);
+    ctx.fillText("Regen >", 15, 148);
+    ctx.fillText(" < Bullet", 68, 183);
+    ctx.fillText("   Speed", 68, 195);
+    ctx.fillText("Dmg >", 15, 228);
+    ctx.fillText("< Reload", 69, 268);
+    ctx.fillText("Speed >", 15, 308);
+    ctx.fillText("< Shield", 69, 351);
     
     if (upgradepoints>=needed[attributes[0]]&&bosstokens>=tokenneeded[attributes[0]]){
         ctx.beginPath();
-        ctx.arc(45, 110, 25, 25, 0, Math.PI * 2);
+        ctx.arc(20, 110, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         
         ctx.fillStyle = "black";
-        ctx.fillText("Click 1", 45, 110);
+        ctx.fillText("Click 1", 20, 110);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[0], 45, 110);
+        ctx.fillText("Tier "+attributes[0], 20, 110);
     }
     
     if (upgradepoints>=needed[attributes[1]]&&bosstokens>=tokenneeded[attributes[1]]){
         ctx.beginPath();
-        ctx.arc(85, 150, 25, 25, 0, Math.PI * 2);
+        ctx.arc(60, 150, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 2", 85, 150);
+        ctx.fillText("Click 2", 60, 150);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[1], 85, 150);
+        ctx.fillText("Tier "+attributes[1], 60, 150);
     }
 
     if (upgradepoints>=needed[attributes[2]]&&bosstokens>=tokenneeded[attributes[2]]){
         ctx.beginPath();
-        ctx.arc(45, 190, 25, 25, 0, Math.PI * 2);
+        ctx.arc(20, 190, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 3", 45, 190);
+        ctx.fillText("Click 3", 20, 190);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[2], 45, 190);
+        ctx.fillText("Tier "+attributes[2], 20, 190);
     }
 
     if (upgradepoints>=needed[attributes[3]]&&bosstokens>=tokenneeded[attributes[3]]){
         ctx.beginPath();
-        ctx.arc(85, 230, 25, 25, 0, Math.PI * 2);
+        ctx.arc(60, 230, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 4", 85, 230);
+        ctx.fillText("Click 4", 60, 230);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[3], 85, 230);
+        ctx.fillText("Tier "+attributes[3], 60, 230);
     }
     
     if (upgradepoints>=needed[attributes[4]]&&bosstokens>=tokenneeded[attributes[4]]){
         ctx.beginPath();
-        ctx.arc(45, 270, 25, 25, 0, Math.PI * 2);
+        ctx.arc(20, 270, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 5", 45, 270);
+        ctx.fillText("Click 5", 20, 270);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[4], 45, 270);
+        ctx.fillText("Tier "+attributes[4], 20, 270);
     }
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
         ctx.beginPath();
-        ctx.arc(85, 310, 25, 25, 0, Math.PI * 2);
+        ctx.arc(60, 310, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 6", 85, 310);
+        ctx.fillText("Click 6", 60, 310);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[5], 85, 310);
+        ctx.fillText("Tier "+attributes[5], 60, 310);
     }
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
         ctx.beginPath();
-        ctx.arc(45, 350, 25, 25, 0, Math.PI * 2);
+        ctx.arc(20, 350, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 7", 45, 350);
+        ctx.fillText("Click 7", 20, 350);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[6], 45, 350);
+        ctx.fillText("Tier "+attributes[6], 20, 350);
     }
       
         
