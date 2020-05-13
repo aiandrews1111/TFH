@@ -676,28 +676,28 @@ function update() {
         
     if (upgradepoints>=needed[attributes[5]]&&bosstokens>=tokenneeded[attributes[5]]){
         ctx.beginPath();
-        ctx.arc(60, 310, 25, 25, 0, Math.PI * 2);
+        ctx.arc(70, 310, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 6", 60, 310);
+        ctx.fillText("Click 6", 70, 310);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[5], 60, 310);
+        ctx.fillText("Tier "+attributes[5], 70, 310);
     }
 
     if (upgradepoints>=needed[attributes[6]]&&bosstokens>=tokenneeded[attributes[6]]){
         ctx.beginPath();
-        ctx.arc(20, 350, 25, 25, 0, Math.PI * 2);
+        ctx.arc(30, 350, 25, 25, 0, Math.PI * 2);
         ctx.fillStyle = "lime";
         ctx.fill();
         ctx.fillStyle = "black";
-        ctx.fillText("Click 7", 20, 350);
+        ctx.fillText("Click 7", 30, 350);
     }
     else{
         ctx.fillStyle = "black";
-        ctx.fillText("Tier "+attributes[6], 20, 350);
+        ctx.fillText("Tier "+attributes[6], 30, 350);
     }
       
         
