@@ -219,8 +219,8 @@ function Bullet(x, y) {
 
 HomingEnemy.prototype.draw = function(){
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
+      this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
   this.distance = Math.sqrt(Math.pow(Math.abs(this.x - x), 2) + Math.pow(Math.abs(this.y - y), 2));
   if (this.distance <= this.range){
@@ -386,8 +386,8 @@ function Enemy(hp, size, speed) {
 }
 Enemy.prototype.draw = function() {
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
+      this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
     
     if (this.goingright == 1){
@@ -478,8 +478,8 @@ function SlowerEnemy(hp, size, speed, range) {
 }
 SlowerEnemy.prototype.draw = function() {
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
+      this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
     if (this.goingright == 1){
         this.x+=this.speedx;
@@ -596,8 +596,8 @@ ShieldEnemy.prototype.draw = function() {
     this.timer ++; 
     
     if (Math.sqrt(Math.pow(this.x-x ,2) + Math.pow(this.y-y, 2)) <= 125 + attributes[6]*9 + this.size && attributes[6]>0){
-      this.speedx = this.basespeedx * this.speed * Math.pow(attributes[6], 0.93);
-      this.speedy = this.basespeedy * this.speed * Math.pow(attributes[6], 0.93);
+      this.speedx = this.basespeedx * this.speed * Math.pow(0.93, attributes[6]);
+      this.speedy = this.basespeedy * this.speed * Math.pow(0.93, attributes[6]);
     }
     
     
